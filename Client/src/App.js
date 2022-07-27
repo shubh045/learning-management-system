@@ -6,8 +6,8 @@ import Downcurve from "./component/Downcurve";
 function App() {
   return (
     <>
-    <Logo/>
-   <Downcurve/>
+      <Logo />
+      <Downcurve />
     </>
   );
 }
