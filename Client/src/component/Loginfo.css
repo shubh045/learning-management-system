@@ -1,7 +1,7 @@
 .login{
     font-family: "lato";
-    margin-left: 9vw;
-    margin-top: 10vw;
+    margin-left: 10vw;
+    margin-top: 8vw;
     text-align: center;
     font-size: 1.5vw;
     font-weight: bold;
@@ -26,9 +26,6 @@
     color: #310048 ;
     margin-bottom:8%;
 }
-.frm{
-    display: grid;
-    
-}
+
 @media screen and (max-width: 800px) {
   }
