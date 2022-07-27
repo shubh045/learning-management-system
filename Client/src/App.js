@@ -1,6 +1,6 @@
 import React from "react";
-import Logo from "./component/Logo";
-import Downcurve from "./component/Downcurve";
+import Logo from "./component/logo/Logo";
+import Downcurve from "./component/Downcurve/Downcurve";
 
 
 function App() {
