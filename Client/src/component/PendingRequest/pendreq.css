@@ -1,0 +1,23 @@
+.empname{
+    display: flex;
+    border-style: solid;
+    justify-content: space-between;
+    border-color: rgb(102, 14, 102);
+    background-color: rgb(102, 14, 102);
+    align-items: center;
+}
+
+.empname button {
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-right: 30px;
+    padding: 5px;
+    box-shadow: 0;
+}
+
+.subject{
+    border-style: solid;
+    border-top: 0;
+    border-color:rgba(99, 9, 99, 0.295);
+    background-color: rgba(99, 9, 99, 0.295);
+}
