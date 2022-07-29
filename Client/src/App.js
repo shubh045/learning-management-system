@@ -1,13 +1,11 @@
 import React from "react";
-import CalendarTable from "./component/Calendar/CalendarTable";
-import Navbar from "./component/Navbar/navbar";
-import Profile from './component/Profile/Profile'
-import ApplyLeave from "./pages/ApplyLeave";
+import Routes from "./route";
+
 
 function App() {
   return (
     <>
-     <ApplyLeave/>
+     <Routes/>
     </>
   );
 }

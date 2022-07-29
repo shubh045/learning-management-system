@@ -1,5 +1,5 @@
 import React from 'react'
-import Pendreq from '../component/PendingRequest/pendreq'
+import Pendreq from '../component/PendingRequest/Pendreq'
 
 
 const PendingRequest = () => {
