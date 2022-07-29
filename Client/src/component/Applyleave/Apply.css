@@ -1,11 +1,11 @@
 .main{
   width: 70%;
-  height: 550px;
   border: 2px solid #800080;
-  margin: 150px;
-  margin-left: 380px;
+  margin-left:23vw;
   background-color: rgb(236, 238, 244);
   border-radius: 20px;
+  position: absolute;
+  top: 15vh;
 }
 
 .Leave{

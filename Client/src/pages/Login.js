@@ -9,8 +9,9 @@ const login = () => {
   return (
     <div>
       <Logo />
-      <Downcurve />
+      
       <Loginfo />
+      <Downcurve />
     </div>
   );
 };

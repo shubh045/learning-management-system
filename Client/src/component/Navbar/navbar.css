@@ -1,8 +1,6 @@
 *{
     margin:0;
-    padding:0;
-    box-sizing: border-box;
-    font-family: 'lato',sans-serif;
+    font-family: 'lato';
 }
 
 html{
@@ -64,13 +62,14 @@ li{
     border: none;
     height: 80px;
     width: auto;
-    font-size: 30px;
+    font-size: 20px;
     transition-duration: 0.5s;
     cursor: pointer;
   }
   .b:hover {
     background-color: #440263;
     color: white;
+    transform: scale(1.1);
 
   }
   

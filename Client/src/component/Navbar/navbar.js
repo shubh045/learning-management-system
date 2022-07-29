@@ -26,11 +26,7 @@ export const Navbar = () => {
             </div>
 
         </nav>
-        <section className='hero-section'>
-                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                
-        <h1>Welcome to HR Home Page</h1>
-        </section>
+        
         </div>
   )
 }

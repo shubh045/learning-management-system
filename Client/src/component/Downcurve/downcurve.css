@@ -1,13 +1,16 @@
-.downcurve{
+.downcurve::after{
+    content: "";
     width:200%;
-    height:20%;
+    height:20vh;
+    display: block;
     background-color:  #470168;
-    position: absolute;
-    bottom:-10%;
     border-radius: 50%;
     transform: rotate(0deg);
+    top: 50px;
+    left: -100px;
+    position: relative;
 }
-*{
-    margin: 0;
-    overflow: hidden;
+.downcurve{
+  overflow: hidden;
+  width: 100%;
 }
