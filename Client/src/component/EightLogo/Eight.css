@@ -1,0 +1,25 @@
+
+
+/* .wrap{
+    
+    display: flex;
+    justify-content:center;
+    float:right;
+} */
+
+
+
+
+.eight{
+   width: 250px;
+   min-width: 100px; 
+   max-width: 400px;
+   height: auto;
+    background-repeat: no-repeat;
+}
+
+.Eight{
+    display: flex;
+    justify-content:center;
+    /* float:right; */
+}

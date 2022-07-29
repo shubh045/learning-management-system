@@ -1,0 +1,37 @@
+.login{
+    font-family: "lato";
+    /* margin-left: 10vw; */
+    /* margin-top: 8vw; */
+    text-align: center;
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: #e0b0f7;
+    display: inline-block;
+    width: 30%;
+    box-shadow: 0px 0px 6px #7205a4;
+    background: linear-gradient(#7205a4, #ca33b3);;
+    border-radius: 6%;
+    border-right: #7205a4 2px solid;
+}
+
+#email,#pwd{
+    height: 2vw;
+    width: 90%;
+    padding-bottom: 2px;
+}
+#forgot,#login{
+    height: 3vw;
+    font-size: 1.2vw;
+    width: 40%;
+    font-weight: bold;
+    color:#7205a4 ;
+    margin-bottom:8%;
+}
+
+.frm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20%;
+    margin-top: 5%;
+}
