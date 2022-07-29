@@ -1,0 +1,37 @@
+.teams{      
+    margin-top: 10%;    
+    margin-left: 20%;      
+    /* background: linear-gradient(white, rgb(231, 197, 236));           */
+} 
+.table{   
+    margin: 0% auto;   
+    width: 65vw;          
+} 
+  tr:hover {background-color: #d8a9ed;}       
+  tr:nth-child(even){background-color:  #c286de ;}      
+
+th {
+    padding-top: 50px;
+    padding-bottom: 50px;  
+    text-align: center; 
+    background-color: #470168;   
+    color: white;   
+} 
+#id1{ 
+    border-radius: 0px 20px 0px 0px; 
+}
+#id2{ 
+    border-radius: 20px 0px 0px 0px;  
+}
+#id3{
+    border-radius: 0px 0px 0px 20px; 
+}
+#id4{
+    border-radius: 0px 0px 20px 0px;  
+} 
+  td {
+    padding-top: 12px;
+    padding-bottom: 12px; 
+    text-align: center; 
+    color:black;        
+  } 
