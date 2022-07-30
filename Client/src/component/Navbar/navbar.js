@@ -2,7 +2,8 @@ import React from 'react'
 import './navbar.css'
 // import Logo from "./component/logo/Logo";
 import Logo from '../logo/Logo'
-import { useNavigate } from 'react-router-dom'
+import Addemp from '../AddEmployee/AddEmployee'
+import { useNavigate, Link } from 'react-router-dom'
 
 export const Navbar = () => {
     const navigate = useNavigate()
@@ -22,6 +23,7 @@ export const Navbar = () => {
                     <li>{<button class="button b">Holidays</button>}</li>
                     <li>{<button class="button b">View Profile</button>}</li>
                     <li>{<button class="button b">Add Emp.</button>}</li>
+                    {/* <li> <Link to={"/add-employee"} >Add emp</Link> </li> */}
                     <li>{<button class="button b">History</button>}</li>
                     <li>{<button class="button b">Notification</button>}</li>
                 </ul>

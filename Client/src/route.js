@@ -1,6 +1,6 @@
 import React from "react"
 import { useRoutes } from "react-router-dom";
-import { Layout } from "./component/Layout/Layout";
+import  Layout  from "./component/Layout/Layout";
 import Login from "./pages/Login"
 
 const Routes = () => useRoutes([
