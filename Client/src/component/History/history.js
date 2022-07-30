@@ -1,7 +1,7 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faCaretDown , faCaretUp, faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react';
-import './history.css'
+import './History.css'
 
 const History = () => {
     const[state , setState]=useState(0)

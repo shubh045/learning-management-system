@@ -1,7 +1,7 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faCaretDown , faCaretUp} from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react';
-import './pendreq.css'
+import './Pendreq.css'
 const Pendreq = () => {
     const[state , setState]=useState(0)
     function button(){
