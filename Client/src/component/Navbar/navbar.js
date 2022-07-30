@@ -18,10 +18,10 @@ export const Navbar = () => {
             {/* second logo part */}
             <div className='menu-link'>
                 <ul>
-                    <li>{<button class="button b" onclick="Hell()">Home</button>}</li>
+                    <li>{<button class="button b" onClick={() => navigate("/")}>Home</button>}</li>
                     <li>{<button class="button b" onClick={() => navigate("/apply-leave")}>Apply Leave</button>}</li>
                     <li>{<button class="button b">Holidays</button>}</li>
-                    <li>{<button class="button b">View Profile</button>}</li>
+                    <li>{<button class="button b">Team Members</button>}</li>
                     <li>{<button class="button b">Add Emp.</button>}</li>
                     {/* <li> <Link to={"/add-employee"} >Add emp</Link> </li> */}
                     <li>{<button class="button b">History</button>}</li>

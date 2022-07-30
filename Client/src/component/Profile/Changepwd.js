@@ -1,6 +1,8 @@
 import React from 'react'
 import './Changepwd.css'
+import { useNavigate } from 'react-router-dom'
 export default function Changepwd() {
+	const navigate = useNavigate()
   return (
     <div className="mainflex">
 		<h2>Change Password</h2>
@@ -18,8 +20,8 @@ export default function Changepwd() {
 	    		<input type="password" name="nnpassword" placeholder="confirm new password" id="nnpwd" />
 				</div>
 				<div className='changeflex'>
-				<input type="button" value="Save" id="save"/>
-	    		<input type="button" value="Cancel" id="cancel" />
+				<button type="button" id="save">Save</button>
+	    		<button id="cancel" onClick={() => navigate("/profile")}>Cancel</button>
 				</div>
 	        </form>
 	  </div>

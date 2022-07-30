@@ -2,6 +2,8 @@ import Navbar from "../Navbar/navbar"
 import {Outlet} from "react-router-dom"
 import Profile from "../Profile/Profile"
 import "./Layout.css"
+import React from 'react'
+
 
 const Layout = () => {
 
