@@ -2,8 +2,7 @@ import React from 'react'
 import './navbar.css'
 // import Logo from "./component/logo/Logo";
 import Logo from '../logo/Logo'
-import Addemp from '../AddEmployee/AddEmployee'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export const Navbar = () => {
     const navigate = useNavigate()
@@ -21,10 +20,10 @@ export const Navbar = () => {
                     <li>{<button class="button b" onClick={() => navigate("/")}>Home</button>}</li>
                     <li>{<button class="button b" onClick={() => navigate("/apply-leave")}>Apply Leave</button>}</li>
                     <li>{<button class="button b">Holidays</button>}</li>
-                    <li>{<button class="button b">Team Members</button>}</li>
-                    <li>{<button class="button b">Add Emp.</button>}</li>
+                    <li>{<button class="button b" onClick={() => navigate("/team-member")}>Team Members</button>}</li>
+                    <li>{<button class="button b" onClick={() => navigate("/add-emp")}>Add Emp.</button>}</li>
                     {/* <li> <Link to={"/add-employee"} >Add emp</Link> </li> */}
-                    <li>{<button class="button b">History</button>}</li>
+                    <li>{<button class="button b" onClick={() => navigate("/history")}>History</button>}</li>
                     <li>{<button class="button b">Notification</button>}</li>
                 </ul>
             </div>

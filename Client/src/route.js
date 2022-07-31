@@ -4,6 +4,10 @@ import  Layout  from "./component/Layout/Layout";
 import Changepwd from "./component/Profile/Changepwd";
 import Login from "./pages/Login"
 import Profileinfo from "./component/Profile/Profileinfo";
+import Addemp from "./component/AddEmployee/AddEmployee"
+import Apply from "./component/Applyleave/Apply";
+import Team from "./component/Team/Team";
+import History from "./component/History/history"
 
 const Routes = () => useRoutes([
     {
@@ -17,11 +21,11 @@ const Routes = () => useRoutes([
         },
         {
             path: "/team-member",
-            element: <div>Page Team</div>,
+            element: <Team />,
         },
         {
             path: "/apply-leave",
-            element: <div>Page Apply leave</div>,
+            element: <Apply />,
           },
           {
             path: "/profile",
@@ -30,6 +34,14 @@ const Routes = () => useRoutes([
           {
             path: "/change-pwd",
             element: <Changepwd/>,
+          },
+          {
+            path: "/add-emp",
+            element: <Addemp />,
+          },
+          {
+            path: "/history",
+            element: <History />,
           },
       ],
     },

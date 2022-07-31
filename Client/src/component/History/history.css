@@ -1,3 +1,9 @@
+.his-con{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .empnam{
     background-color: green;
     border-color: green;
