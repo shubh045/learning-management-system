@@ -1,12 +1,13 @@
-/* .teams{      
-     margin-top: 10%;    
+.teams{      
+     /* margin-top: 10%;    
     margin-left: 20%;       
-     background: linear-gradient(white, rgb(231, 197, 236));           
-}  */
+     background: linear-gradient(white, rgb(231, 197, 236));            */
+     margin: auto;
+} 
 .table {
   margin: 0% auto;
   width: 70vw;
-  height:86.5vh;
+  /* height:86.5vh; */
 }
 tr:hover {
   background-color: #d8a9ed;
