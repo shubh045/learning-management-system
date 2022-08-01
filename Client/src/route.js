@@ -7,10 +7,11 @@ import Profileinfo from "./component/Profile/Profileinfo";
 import Addemp from "./component/AddEmployee/AddEmployee"
 import Apply from "./pages/ApplyLeave";
 import Team from "./component/Team/Team";
-import History from "./component/History/history"
-import PendingRequest from './component/PendingRequest/pendreq'
+import History from "./component/History/history";
+import PendingRequest from './component/PendingRequest/pendreq';
 const Routes = () => useRoutes([
     {
+      
       path: "/",
       element: <Layout />,
       children: [
@@ -53,6 +54,7 @@ const Routes = () => useRoutes([
         path: "/login",
         element: <Login/>
     }
+    
   ]);
 
   export default Routes;
