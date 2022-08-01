@@ -8,6 +8,7 @@ export default function Profileinfo() {
 	const navigate = useNavigate()
   const [isReadonly, setIsReadonly] = useState(true);
   const [buttonText, setButtonText] = useState('Edit');
+  const [Text, setText] = useState('Full Name');
   const handlec=()=>{setIsReadonly(prevState => !prevState);}
   const handlecl=()=>{
     if (buttonText==="Edit"){
@@ -16,11 +17,14 @@ export default function Profileinfo() {
       setButtonText('Edit');
     }
   }
+  const handlech=(event)=>{
+    setText(event.target.value); 
+   }
 
   return (
     <div className="info">
 	    	<div className='tinfo'>
-				<input type="text" id="myipt"  readOnly={isReadonly} onInput={e => setValue(e)} value="Full Name"/>
+				<input type="text" id="myipt"  readOnly={isReadonly} onInput={e => setValue(e)} value={Text} onChange={handlech}/>
 				<img src={dummy} className='image' alt="pic"/>
 			</div>
 			< div className='minfo'>
