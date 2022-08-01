@@ -6,6 +6,12 @@
     background-color: rgb(102, 14, 102);
     align-items: center;
 }
+.penwrap{
+    display: flex;
+    flex-direction: column;
+    width:75vw;
+
+}
 
 .empname button {
     margin-top: 3px;

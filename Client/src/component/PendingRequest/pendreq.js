@@ -1,7 +1,7 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faCaretDown , faCaretUp} from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react';
-import './Pendreq.css'
+import './pendreq.css'
 const Pendreq = () => {
     const[state , setState]=useState(0)
     function button(){
@@ -31,7 +31,7 @@ const Pendreq = () => {
         }
     }
     return(
-        <>
+        <div className='penwrap'>
         <div className="empname">
             <label>Employee Name: {}</label>
             <div className="button">
@@ -47,7 +47,7 @@ const Pendreq = () => {
             <label>To Date: </label><br/>
             {extend()}
         </div>
-        </>
+        </div>
     );
 }
 

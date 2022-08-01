@@ -5,15 +5,14 @@ import Downcurve from "../component/Downcurve/Downcurve";
 
 
 
-const login = () => {
+const Login = () => {
   return (
     <div>
       <Logo />
-      
       <Loginfo />
       <Downcurve />
     </div>
   );
 };
 
-export default login;
+export default Login;

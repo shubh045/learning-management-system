@@ -5,8 +5,6 @@ import Navbar from '../component/Navbar/navbar'
 const ApplyLeave = () => {
   return (
     <div>
-      <Navbar/>
-      <Profile/>
       <Apply/>
     </div>
   )

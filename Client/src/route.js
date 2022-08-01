@@ -5,10 +5,10 @@ import Changepwd from "./component/Profile/Changepwd";
 import Login from "./pages/Login"
 import Profileinfo from "./component/Profile/Profileinfo";
 import Addemp from "./component/AddEmployee/AddEmployee"
-import Apply from "./component/Applyleave/Apply";
+import Apply from "./pages/ApplyLeave";
 import Team from "./component/Team/Team";
 import History from "./component/History/history"
-
+import PendingRequest from './component/PendingRequest/pendreq'
 const Routes = () => useRoutes([
     {
       path: "/",
@@ -43,11 +43,15 @@ const Routes = () => useRoutes([
             path: "/history",
             element: <History />,
           },
+          {
+            path: "/PendingRequest",
+            element: <PendingRequest/>,
+          },
       ],
     },
     {
         path: "/login",
-        element: <Login />
+        element: <Login/>
     }
   ]);
 

@@ -5,6 +5,7 @@
     align-items: center;
     font-family: "lato";
     gap:80px;
+    height:100%;
 }
 .profsubcont{
     display: flex;
