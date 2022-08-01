@@ -1,10 +1,12 @@
 import React from 'react'
 import './Loginfo.css'
 import Eight from '../EightLogo/Eight';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
+
 export default function Loginfo() {
 	const navigate = useNavigate()
   return (
+
       <div className="frm">
 		
 	    	<form className="login" method="post" action="">
