@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     font-family: "lato";
-    gap:80px;
+    gap: 135px;
     height:100%;
 }
 .profsubcont{
@@ -12,19 +12,17 @@
     flex-direction: column;
     align-items: center;
     width:100%;
-    gap:20px;
 }
 .end{
     gap:30px;
-    justify-content: end;
 }
-.arrowl{
+/* .arrowl{
     border: solid #7205a4;
     border-width: 0 7px 7px 0;
     padding: 5px;
     transform: rotate(135deg);
     align-self: flex-end;
-}
+} */
 /* .arrowr{
     border: solid #7205a4;
     border-width: 0 7px 7px 0;
