@@ -7,14 +7,12 @@ const Pendreq = () => {
     function button(){
         if (state===0){
             return(
-                <button onClick={() => setState(1)} style={{backgroundColor:"rgb(102, 14, 102)",
-                borderColor:'rgb(102, 14, 102)'}}><FontAwesomeIcon icon={faCaretDown} /></button>
+                <button onClick={() => setState(1)} className="b3"><FontAwesomeIcon icon={faCaretDown} /></button>
             )
         }
         else{
             return(
-                <button onClick={() => setState(0)} style={{backgroundColor:"rgb(102, 14, 102)",
-                borderColor:'rgb(102, 14, 102)'}}><FontAwesomeIcon icon={faCaretUp} /></button>
+                <button onClick={() => setState(0)} className="b3"><FontAwesomeIcon icon={faCaretUp} /></button>
             )
         }
     }
@@ -32,15 +30,15 @@ const Pendreq = () => {
     }
     return(
         <div className='penwrap'>
-        <div className="empname">
+        <div className="emname">
             <label>Employee Name: {}</label>
             <div className="button">
-            <button style={{backgroundColor:"green" , borderColor:"white"}}>ACCEPT</button>
-            <button style={{backgroundColor:"red" , borderColor:'white'}}>REJECT</button>
+            {<button class="button b1"><b>ACCEPT</b></button>}
+            {<button class="button b2"><b>REJECT</b></button>}
             {button()}
             </div>
         </div>
-        <div className="subject">
+        <div className="suject">
             <label>Type of Leave: {}</label><br/>
             <label>Subject: {}</label><br/>
             <label>From Date: {}</label>
