@@ -17,6 +17,7 @@ const History = () => {
           style={{
             backgroundColor: "rgb(102, 14, 102)",
             borderColor: "rgb(102, 14, 102)",
+            cursor:"pointer" 
           }}
         >
           <FontAwesomeIcon icon={faCaretDown} />
@@ -29,6 +30,7 @@ const History = () => {
           style={{
             backgroundColor: "rgb(102, 14, 102)",
             borderColor: "rgb(102, 14, 102)",
+            cursor:"pointer" 
           }}
         >
           <FontAwesomeIcon icon={faCaretUp} />
