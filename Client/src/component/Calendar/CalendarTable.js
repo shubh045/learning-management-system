@@ -1,19 +1,30 @@
-import React, { useState } from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
-import './calendarTable.css'
+import React from "react";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+// import timeGridPlugin from "@fullcalendar/timegrid";
 
+//import "@fullcalendar/core/main.css";
+import "@fullcalendar/daygrid/main.css";
+import "@fullcalendar/timegrid/main.css";
+import events from "./Event";
+import "./calendarTable.css"
 
-function CalendarTable() {
-  const [value, onChange] = useState(new Date());
-
+export default function CalendarTable() {
   return (
-    <div className='calwrap'>
-    <div>
-      <Calendar onChange={onChange} value={value} />
-    </div>
+    <div className="calendar">
+      <FullCalendar
+        defaultView="dayGridMonth"
+        // themeSystem="Simplex"
+        // header={{
+        //   left: "prev,next",
+        //   center: "title",
+        //   right: "dayGridMonth,timeGridWeek,timeGridDay",
+        // }}
+        plugins={[dayGridPlugin]}
+        events={events}
+        displayEventEnd="true"
+        eventColor={"#" + Math.floor(Math.random() * 16777215).toString(16)}
+      />
     </div>
   );
 }
-
-export default CalendarTable;

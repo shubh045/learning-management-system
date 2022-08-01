@@ -7,8 +7,11 @@ import Profileinfo from "./component/Profile/Profileinfo";
 import Addemp from "./component/AddEmployee/AddEmployee"
 import Apply from "./pages/ApplyLeave";
 import Team from "./component/Team/Team";
-import History from "./component/History/history";
-import PendingRequest from './component/PendingRequest/pendreq';
+import History from "./component/History/history"
+import PendingRequest from './component/PendingRequest/pendreq'
+import CalendarTable from "./component/Calendar/CalendarTable";
+import Empholiday from "./component/Empholiday/Empholiday"
+
 const Routes = () => useRoutes([
     {
       
@@ -18,7 +21,7 @@ const Routes = () => useRoutes([
         {
           path: "/",
           index: true,
-          element: <div>Page Dashboard</div>,
+          element: <Empholiday />,
         },
         {
             path: "/team-member",
@@ -47,6 +50,10 @@ const Routes = () => useRoutes([
           {
             path: "/PendingRequest",
             element: <PendingRequest/>,
+          },
+          {
+            path: "/Holiday",
+            element: <CalendarTable/>,
           },
       ],
     },

@@ -3,7 +3,6 @@ import './Loginfo.css'
 import Eight from '../EightLogo/Eight';
 import { useNavigate } from 'react-router-dom'
 
-
 export default function Loginfo() {
 	const navigate = useNavigate()
   return (
