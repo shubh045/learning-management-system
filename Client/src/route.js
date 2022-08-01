@@ -10,6 +10,7 @@ import Team from "./component/Team/Team";
 import History from "./component/History/history"
 import PendingRequest from './component/PendingRequest/pendreq'
 import CalendarTable from "./component/Calendar/CalendarTable";
+import Empholiday from "./component/Empholiday/Empholiday";
 const Routes = () => useRoutes([
     {
       path: "/",
@@ -18,7 +19,7 @@ const Routes = () => useRoutes([
         {
           path: "/",
           index: true,
-          element: <div>Page Dashboard</div>,
+          element: <Empholiday />,
         },
         {
             path: "/team-member",
