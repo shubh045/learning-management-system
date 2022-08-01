@@ -9,6 +9,7 @@ import Apply from "./pages/ApplyLeave";
 import Team from "./component/Team/Team";
 import History from "./component/History/history"
 import PendingRequest from './component/PendingRequest/pendreq'
+import CalendarTable from "./component/Calendar/CalendarTable";
 const Routes = () => useRoutes([
     {
       path: "/",
@@ -46,6 +47,10 @@ const Routes = () => useRoutes([
           {
             path: "/PendingRequest",
             element: <PendingRequest/>,
+          },
+          {
+            path: "/Holiday",
+            element: <CalendarTable/>,
           },
       ],
     },
