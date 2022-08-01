@@ -8,13 +8,13 @@ const Pendreq = () => {
         if (state===0){
             return(
                 <button onClick={() => setState(1)} style={{backgroundColor:"rgb(102, 14, 102)",
-                borderColor:'rgb(102, 14, 102)'}}><FontAwesomeIcon icon={faCaretDown} /></button>
-            )
+                borderColor:'rgb(102, 14, 102)',cursor:'pointer'}}><FontAwesomeIcon icon={faCaretDown} /></button>
+            ) 
         }
         else{
             return(
                 <button onClick={() => setState(0)} style={{backgroundColor:"rgb(102, 14, 102)",
-                borderColor:'rgb(102, 14, 102)'}}><FontAwesomeIcon icon={faCaretUp} /></button>
+                borderColor:'rgb(102, 14, 102)',cursor:'pointer'}}><FontAwesomeIcon icon={faCaretUp} /></button>
             )
         }
     }
@@ -35,8 +35,8 @@ const Pendreq = () => {
         <div className="empname">
             <label>Employee Name: {}</label>
             <div className="button">
-            <button style={{backgroundColor:"green" , borderColor:"white"}}>ACCEPT</button>
-            <button style={{backgroundColor:"red" , borderColor:'white'}}>REJECT</button>
+            <button style={{backgroundColor:"green" , borderColor:"white",cursor:'pointer'}}>ACCEPT</button>
+            <button style={{backgroundColor:"red" , borderColor:'white',cursor:'pointer'}}>REJECT</button>
             {button()}
             </div>
         </div>
