@@ -194,7 +194,7 @@ const Addemp = () => {
                 <div className="btns">
                   <button  onClick={submitHandler} className="btn-add">
                     Add
-                  </button><br/><br/>
+                  </button>
                   {errorMessage && <p style={{background: "red", padding: "10px", color: "#fff", maxWidth:"500px"}}>{errorMessage}</p>}
     {result && <p style={{background: "green", padding: "10px", color: "#fff"}}>{result}</p>}
                   <button type="reset" className="btn-res">
