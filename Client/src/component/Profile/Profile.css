@@ -4,17 +4,27 @@
     flex-direction: column;
     align-items: center;
     font-family: "lato";
-    gap: 135px;
+    gap: 25px;
     height:100%;
 }
 .profsubcont{
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     width:100%;
 }
+.profsubcont input{
+    text-align: center;
+    background: transparent;
+    border: none;
+    width: auto;
+    font-weight: bold;
+    font-size: 15px;
+    color:#5b0583;
+}
 .end{
-    gap:30px;
+    gap:20px;
 }
 /* .arrowl{
     border: solid #7205a4;
@@ -32,8 +42,8 @@
 } */
 
 .profpic{
-    height:180px;
-    width:180px;
+    height:160px;
+    width:160px;
     border-radius: 100px;
     box-shadow: 0px 0px 10px #35034c;
     margin-top: 20px ;

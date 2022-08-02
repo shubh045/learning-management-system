@@ -11,6 +11,10 @@ const Profile = () => {
     <div className='profcontainer'>
       <div className='profsubcont'>
       <img src={dummy}  className='profpic'/><br/>
+      <input type="text" name="name" value="Full Name"/>
+      <input type="text" name="email" value="Email"/>
+      <input type="text" name="contact" value="Contact No"/>
+      <input type="text" name="role" value="Role"/>
       {/* <i className="arrowl" onclick={collapse}></i> */}
       </div>
       {/* <Link to={"/"}>Dashboard</Link><br />
