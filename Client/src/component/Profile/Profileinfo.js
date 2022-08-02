@@ -32,7 +32,7 @@ export default function Profileinfo() {
           <div>Email: <input type="text" id="myip" value="abc@gmail.com" readOnly={isReadonly} onInput={e => setValue(e)}/></div>
           <div>DOB: <input type="text" id="myip" value="dd-mm-yyyy" readOnly={isReadonly} onInput={e => setValue(e)}/></div>
           <div>Contact No: <input type="text" id="myip" value="xxxxxxxxxx" readOnly={isReadonly} onInput={e => setValue(e)}/></div>
-          <div>Roll: <input type="text" id="myip" value="XXXXX" readOnly={isReadonly} onInput={e => setValue(e)}/></div>
+          <div>Role: <input type="text" id="myip" value="XXXXX" readOnly={isReadonly} onInput={e => setValue(e)}/></div>
           <div>DOJ: <input type="text" id="myip" value="dd-mm-yyyy" readOnly={isReadonly} onInput={e => setValue(e)}/></div>
           </div>
           <div className='minfoin'>

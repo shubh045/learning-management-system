@@ -14,11 +14,7 @@ const History = () => {
       return (
         <button
           onClick={() => setState(1)}
-          style={{
-            backgroundColor: "rgb(102, 14, 102)",
-            borderColor: "rgb(102, 14, 102)",
-            cursor:"pointer" 
-          }}
+          className="b31"
         >
           <FontAwesomeIcon icon={faCaretDown} />
         </button>
@@ -27,11 +23,7 @@ const History = () => {
       return (
         <button
           onClick={() => setState(0)}
-          style={{
-            backgroundColor: "rgb(102, 14, 102)",
-            borderColor: "rgb(102, 14, 102)",
-            cursor:"pointer" 
-          }}
+          className="b31"
         >
           <FontAwesomeIcon icon={faCaretUp} />
         </button>
@@ -42,10 +34,10 @@ const History = () => {
     if (state === 1) {
       return (
         <>
-          <label>From Date: {}</label>
-          <label>To Date: </label>
+          <p style={{display:"inline-block" ,padding:"7px"}}>From Date: {}</p>
+          <p style={{display:"inline-block" ,padding:"7px"}}>To Date: </p>
           <br />
-          <label>Description: {}</label>
+          <p style={{padding:"7px"}}>Description: {}</p>
           <br />
         </>
       );
@@ -73,35 +65,29 @@ const History = () => {
         </div>
         <div>
           <div className="empnam">
-            <label>Employee Name: {}</label>
+            <p>Employee Name: {}</p>
             <div className="button">
-              <label>Status: Accepted</label>
+              <p style={{display:"inline-block"}}><b>Status: Accepted</b></p>
               {button()}
             </div>
           </div>
           <div className="subjec">
-            <label style={{ padding: "5px" }}>Date of Leave applied:</label>
-            <br />
-            <label style={{ padding: "5px" }}>Type of Leave: {}</label>
-            <br />
-            <label style={{ padding: "5px" }}>Subject: {}</label>
-            <br />
+            <p style={{ padding: "7px" }}>Date of Leave applied:</p>
+            <p style={{ padding: "7px" }}>Type of Leave: {}</p>
+            <p style={{ padding: "7px" }}>Subject: {}</p>
             {extend()}
           </div>
           <div className="empna">
-            <label>Employee Name: {}</label>
+            <p>Employee Name: {}</p>
             <div className="button">
-              <label>Status: Rejected</label>
+              <p  style={{display:"inline-block"}}><b>Status: Rejected</b></p>
               {button()}
             </div>
           </div>
           <div className="subje">
-            <label style={{ padding: "5px" }}>Date of Leave applied:</label>
-            <br />
-            <label style={{ padding: "5px" }}>Type of Leave: {}</label>
-            <br />
-            <label style={{ padding: "5px" }}>Subject: {}</label>
-            <br />
+            <p style={{ padding: "7px" }}>Date of Leave applied:</p>
+            <p style={{ padding: "7px" }}>Type of Leave: {}</p>
+            <p style={{ padding: "7px" }}>Subject: {}</p>
             {extend()}
           </div>
         </div>
