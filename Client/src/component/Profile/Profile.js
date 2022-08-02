@@ -4,14 +4,18 @@ import dummy from './dummypic.jpg'
 import { Link } from 'react-router-dom'
 
 const Profile = () => {
-  const collapse=()=>{
-    // document.querySelector()
-  }
+  // const collapse=()=>{
+  //   document.querySelector()
+  // }
   return (
     <div className='profcontainer'>
       <div className='profsubcont'>
       <img src={dummy}  className='profpic'/><br/>
-      <i className="arrowl" onclick={collapse}></i>
+      <input type="text" name="name" value="Full Name"/>
+      <input type="text" name="email" value="Email"/>
+      <input type="text" name="contact" value="Contact No"/>
+      <input type="text" name="role" value="Role"/>
+      {/* <i className="arrowl" onclick={collapse}></i> */}
       </div>
       {/* <Link to={"/"}>Dashboard</Link><br />
       <Link to={"/team-member"}>Team member</Link> <br />

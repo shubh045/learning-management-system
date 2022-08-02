@@ -19,7 +19,7 @@ export const Navbar = () => {
                 <ul>
                     <li>{<button class="button b" onClick={() => navigate("/")}>Home</button>}</li>
                     <li>{<button class="button b" onClick={() => navigate("/apply-leave")}>Apply Leave</button>}</li>
-                    <li>{<button class="button b">Holidays</button>}</li>
+                    <li>{<button class="button b" onClick={() => navigate("/Holiday")}>Holidays</button>}</li>
                     <li>{<button class="button b" onClick={() => navigate("/team-member")}>Team Members</button>}</li>
                     <li>{<button class="button b" onClick={() => navigate("/add-emp")}>Add Emp.</button>}</li>
                     {/* <li> <Link to={"/add-employee"} >Add emp</Link> </li> */}

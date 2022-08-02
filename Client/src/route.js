@@ -9,15 +9,19 @@ import Apply from "./pages/ApplyLeave";
 import Team from "./component/Team/Team";
 import History from "./component/History/history"
 import PendingRequest from './component/PendingRequest/pendreq'
+import CalendarTable from "./component/Calendar/CalendarTable";
+import Empholiday from "./component/Empholiday/Empholiday"
+
 const Routes = () => useRoutes([
     {
+      
       path: "/",
       element: <Layout />,
       children: [
         {
           path: "/",
           index: true,
-          element: <div>Page Dashboard</div>,
+          element: <Empholiday />,
         },
         {
             path: "/team-member",
@@ -47,12 +51,17 @@ const Routes = () => useRoutes([
             path: "/PendingRequest",
             element: <PendingRequest/>,
           },
+          {
+            path: "/Holiday",
+            element: <CalendarTable/>,
+          },
       ],
     },
     {
         path: "/login",
         element: <Login/>
     }
+    
   ]);
 
   export default Routes;
