@@ -10,7 +10,7 @@
     color: white;
     padding: 7px;
 }
-.penwrap{
+.penwrap{ 
     display: flex;
     flex-direction: column;
     width:75vw;
