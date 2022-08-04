@@ -47,7 +47,6 @@ app.post("/api/addEmployee", async (req, res) => {
       city,
       state,
       postal_code,
-      manager_First_Name,
       manager_Name,
       manager_email
     } = req.body;
@@ -64,8 +63,8 @@ app.post("/api/addEmployee", async (req, res) => {
       city,
       state,
       postal_code,
-      manager_First_Name,
-      manager_Last_Name,
+      manager_Name,
+      manager_email,
     });
 
     await employee.save();
