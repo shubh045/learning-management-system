@@ -174,12 +174,12 @@ const Addemp = () => {
                   <h2>Reporting Manager</h2>
                   <div className="disp name">
                     <div className="disp f-name label-i">
-                      <label htmlFor="mname">Full Name</label>
-                      <input onChange={changeHandler} name="manager_Name"
-                        type="text"
-                        placeholder="Enter full name"
-                        id="mname"
-                      />
+                      <select id="drop-down">
+                        <option selected value="Manager1">Anuj Thakur</option>
+                        <option value="Manager2">Deepak Verna</option>
+                        <option value="Manager3">Gurinder Singh</option>
+                        <option value="Manager4">Akash Sharma</option>
+                      </select>
                     </div>
                     <div className="e-mail disp label-i">
                       <label htmlFor="me-mail">Email</label>
