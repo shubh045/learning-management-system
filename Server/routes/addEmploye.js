@@ -10,7 +10,8 @@ const Router = express.Router();
 
 Router.post("/api/addEmployee", async (req, res) => {
   try {
-    const { firstName,
+    const {
+      firstName,
       lastName, 
       email,
       contactNumber,

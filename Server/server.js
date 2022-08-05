@@ -64,7 +64,7 @@ app.post("/api/addRole", async (req, res) => {
 
 
 app.get("/api/roleList",async (req, res) =>{
-   Role.find()
+  Role.find()
  .then(result=>{
    res.status(200).json({
      roleData:result
