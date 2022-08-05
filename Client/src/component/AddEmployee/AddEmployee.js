@@ -8,20 +8,20 @@ import axios from "axios"
 const Addemp = () => {
 
   const [state, setState] = useState({
-    First_Name:"",
-      Last_Name:"",
-      email:"",
-      contact_number:"",
-      role:"",
-      joining:"",
-      dob:"",
-      gender:"",
-      address:"",
-      city:"",
-      state:"",
-      postal_code:"",
-      manager_Name:"",
-      manager_email:"",
+    firstName:"",
+    lastName: "",
+    email:" ",
+    contactNumber:" ",
+    role:"",
+    joining:"",
+    dob: " ",
+    gender: "",
+    address: "",
+    city:"",
+    state:"",
+    postalCode: "",
+    managerName:"",
+    managerEmail:""
   })
 
   const [errorMessage, setErrorMessage] = useState("")
@@ -35,7 +35,8 @@ const Addemp = () => {
     })
   } 
 
-  const submitHandler = async () => {
+  const submitHandler = async (e) => {
+    e.preventDefault();
     try {
       setResult("")
       setErrorMessage("")
@@ -66,7 +67,7 @@ const Addemp = () => {
                 <div className="disp name">
                   <div className="disp f-name label-i">
                     <label htmlFor="fname">First Name</label>
-                    <input onChange={changeHandler} name="First_Name"
+                    <input onChange={changeHandler} name="firstName"
                       type="text"
                       placeholder="Enter first name"
                       id="fname"
@@ -74,7 +75,7 @@ const Addemp = () => {
                   </div>
                   <div className="disp l-name label-i">
                     <label htmlFor="lname">Last Name</label>
-                    <input onChange={changeHandler} name="Last_Name"
+                    <input onChange={changeHandler} name="lastName"
                       type="text"
                       placeholder="Enter Last name"
                       id="lname"
@@ -88,7 +89,7 @@ const Addemp = () => {
                   </div>
                   <div className="phone disp label-i">
                     <label htmlFor="phone">Contact Number</label>
-                    <input onChange={changeHandler} name="contact_number"
+                    <input onChange={changeHandler} name="contactNumber"
                       type="tel"
                       pattern="[0-9]{10}"
                       placeholder="Enter Contact no."
@@ -167,23 +168,23 @@ const Addemp = () => {
 
                   <div className="pinc disp label-i">
                     <label htmlFor="pinc">Postal code</label>
-                    <input onChange={changeHandler} name="postal_code" type="number" id="pinc" />
+                    <input onChange={changeHandler} name="postalCode" type="number" id="pinc" />
                   </div>
                 </div>
                 <div className="r-manager">
                   <h2>Reporting Manager</h2>
                   <div className="disp name">
                     <div className="disp f-name label-i">
-                      <label htmlFor="mname">Full Name</label>
-                      <input onChange={changeHandler} name="manager_Name"
-                        type="text"
-                        placeholder="Enter full name"
-                        id="mname"
-                      />
+                      <select id="drop-down" name="managerName" value={state.managerName} onChange={changeHandler}>
+                        <option value="Anuj Thakur">Anuj Thakur</option>
+                        <option value="Deepak Verna">Deepak Verna</option>
+                        <option value="Gurinder Singh">Gurinder Singh</option>
+                        <option value="Akash Sharma">Akash Sharma</option>
+                      </select>
                     </div>
                     <div className="e-mail disp label-i">
                       <label htmlFor="me-mail">Email</label>
-                      <input onChange={changeHandler} name="manager_email"
+                      <input onChange={changeHandler} name="managerEmail"
                         type="text"
                         placeholder="Enter email"
                         id="me-mail"
