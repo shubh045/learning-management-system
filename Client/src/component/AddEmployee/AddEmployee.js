@@ -35,7 +35,8 @@ const Addemp = () => {
     })
   } 
 
-  const submitHandler = async () => {
+  const submitHandler = async (e) => {
+    e.preventDefault();
     try {
       setResult("")
       setErrorMessage("")
@@ -174,12 +175,12 @@ const Addemp = () => {
                   <h2>Reporting Manager</h2>
                   <div className="disp name">
                     <div className="disp f-name label-i">
-                      <label htmlFor="mname">Full Name</label>
-                      <input onChange={changeHandler} name="manager_Name"
-                        type="text"
-                        placeholder="Enter full name"
-                        id="mname"
-                      />
+                      <select id="drop-down" name="manager_Name" value={state.manager_Name} onChange={changeHandler}>
+                        <option value="Anuj Thakur">Anuj Thakur</option>
+                        <option value="Deepak Verna">Deepak Verna</option>
+                        <option value="Gurinder Singh">Gurinder Singh</option>
+                        <option value="Akash Sharma">Akash Sharma</option>
+                      </select>
                     </div>
                     <div className="e-mail disp label-i">
                       <label htmlFor="me-mail">Email</label>

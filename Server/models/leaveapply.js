@@ -1,15 +1,16 @@
 const mongoose = require("mongoose");
 
-const apllyLeave = new mongoose.Schema(
+const applyLeave = new mongoose.Schema(
   {
-    Type_of_Leave: { type: String, required: true },
-    From_Date: { type: Date, required: true },
-    To_Date: { type: Date, required: true },
+    dateApplied: {type: Date},
+    leaveType: { type: String, required: true },
+    fromDate: { type: Date, required: true },
+    toDate: { type: Date, required: true },
     subject: { type: String, required: true },
-    discription: { type: String, required: true }
+    description: { type: String, required: true }
   },
   { collation: "leave" }
 );
 
-const LeaveApply = mongoose.model("leave", leave);
+const LeaveApply = mongoose.model("leave", applyLeave);
 module.exports = LeaveApply;

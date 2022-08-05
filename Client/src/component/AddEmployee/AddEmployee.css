@@ -24,7 +24,7 @@
   width: 80%;
 }
 
-input {
+input, #drop-down {
   width: 100%;
   padding: 10px;
   border-radius: 5px;
@@ -67,6 +67,7 @@ input {
 .f-name input,
 .l-name input,
 .e-mail input,
+
 .phone input,
 .role input,
 .doj input,
@@ -88,6 +89,11 @@ input {
 
 .doj input{
     padding: 9px;
+}
+
+#drop-down{
+  margin-top: 24px;
+  padding: 9px;
 }
 
 .btns{
