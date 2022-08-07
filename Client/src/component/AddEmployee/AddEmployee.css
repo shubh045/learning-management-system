@@ -24,12 +24,16 @@
   width: 80%;
 }
 
-input, #drop-down {
+input, #drop-down ,#role {
   width: 100%;
   padding: 10px;
   border-radius: 5px;
   outline: none;
   border: 2px solid #7205a4;
+}
+
+#role{
+  padding: 9px;
 }
 
 .name,
@@ -111,4 +115,21 @@ input, #drop-down {
 
 .btn-res{
     margin-left: 10px;
+}
+
+.role-modal{
+  height: 100%;
+  width: 100%;
+  background-color: rgba(248, 229, 249, 0.50);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.role-border{
+  border: 2px solid #7205a4;
+  /* height: 30%;
+  width: 30%;
+  padding: 35%; */
 }
