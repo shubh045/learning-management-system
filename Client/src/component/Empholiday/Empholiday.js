@@ -8,6 +8,18 @@ const Empholiday = () => {
     { name: "Parental leave", leave: 30 },
   ];
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28"];
+  const renderCustomizedLabel = ({ x, y, name }) => {
+    return (
+      <text
+        x={x+30}
+        y={y}
+        fill="purple"
+        textAnchor="end"
+      >
+        {name}
+      </text>
+    );
+  };
   return (
     <>
       <div className="home-page">
@@ -39,8 +51,15 @@ const Empholiday = () => {
             </table>
           </div>
           <div className="piec">
-            <PieChart width={550} height={500}>
-              <Pie data={data} dataKey="leave" outerRadius={200}>
+            <PieChart width={550} height={500} >
+              <Pie
+                data={data}
+                dataKey="leave"
+                outerRadius={200}
+                label={renderCustomizedLabel}
+                nameKey="name"
+                isAnimationActive={false}
+              >
                 {data.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}

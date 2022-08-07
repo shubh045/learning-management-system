@@ -1,54 +1,83 @@
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faCaretDown , faCaretUp} from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react';
-import './pendreq.css'
+import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect } from "react";
+import "./pendreq.css";
+import axios from "axios";
+import DescButton from "./DescButton";
+import Description from "./Description";
+import Response from "./Response";
+
 const Pendreq = () => {
-    const[state , setState]=useState(0)
-    function button(){
-        if (state===0){
-            return(
-                <button onClick={() => setState(1)} className='b3'><FontAwesomeIcon icon={faCaretDown} /></button>
-            ) 
-        }
-        else{
-            return(
-                <button onClick={() => setState(0)} className='b3'><FontAwesomeIcon icon={faCaretUp} /></button>
-            )
-        }
+  const [leaveData, setLeaveData] = useState([]);
+
+  const getLeaveData = async () => {
+    try {
+      const lData = await axios.get("http://localhost:3200/api/leaveApply");
+      console.log(lData.data.leave);
+      if (lData.data.leave) {
+        setLeaveData(lData.data.leave);
+      }
+    } catch (error) {
+      console.log(error.error);
+      // setErrorMessage(error.error)
     }
-    function extend(){
-        if (state===1){
-            return(
-                <>
-                <div>
-                <p style={{padding:"10px"}}>Description: {}</p>
-                <p style={{padding:"10px"}}>Leave Status:</p>
-                </div>
-                </>
-            )
-        }
+  };
+  useEffect(() => {
+    getLeaveData();
+  }, []);
+
+  const [state, setState] = useState({ toggl: false, arrow: faCaretDown });
+  function handleClick(e, id) {
+    if (id === Number(e.target.id))
+      setState((prev) => ({ ...prev, toggl: !prev.toggl }));
+    if (state.toggl) {
+      setState((prev) => ({ ...prev, arrow: faCaretDown }));
+    } else {
+      setState((prev) => ({ ...prev, arrow: faCaretUp }));
     }
-    return(
-        <div className='penwrap'>
-        <div className="emname">
-            <label>Employee Name: {}</label>
-            <div className="button">
-            <button className='b1'><b>ACCEPT</b></button>
-            <button className='b2'><b>REJECT</b></button>
-            {button()}
+  }
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      {[...leaveData].map((emp, index) => {
+        const {
+          dateApplied,
+          leaveType,
+          fromDate,
+          toDate,
+          subject,
+          description,
+        } = emp;
+
+        return (
+          <div className="penwrap" key={index}>
+            <div className="emname">
+              <label>Employee Name: {}</label>
+              <div className="button">
+                <Response response="Accept" className="b1" />
+                <Response response="Reject" className="b2" />
+                <DescButton
+                  handleClick={handleClick}
+                  arrow={state.arrow}
+                  key={index}
+                  id={index}
+                  index={index}
+                />
+              </div>
             </div>
-        </div>
-        <div className="suject">
-            <p style={{padding:"10px"}}>Type of Leave: {}</p>
-            <p style={{padding:"10px"}}>Subject: {}</p>
-            <p style={{padding:"10px" ,display:"inline-block"}}>From Date: {}</p>
-            <p style={{display:"inline-block"}}>To Date: </p>
-            {extend()}
-        </div>
-        </div>
-    );
-}
+            <div className="suject">
+              <p style={{ padding: "10px" }}>Type of Leave: {leaveType}</p>
+              <p style={{ padding: "10px" }}>Subject: {subject}</p>
+              <p style={{ padding: "10px", display: "inline-block" }}>
+                From Date: {fromDate}
+              </p>
+              <p style={{ display: "inline-block" }}>To Date: {toDate}</p>
+              {state.toggl && <Description description={description} />}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
-export default Pendreq
-
- 
+export default Pendreq;

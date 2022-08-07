@@ -35,10 +35,10 @@ app.post("/api/addEmployee", async (req, res) => {
   console.log(req.body);
   try {
     const {
-      First_Name,
-      Last_Name,
+      firstName,
+      lastName,
       email,
-      contact_number,
+      contactNumber,
       role,
       joining,
       dob,
@@ -46,15 +46,15 @@ app.post("/api/addEmployee", async (req, res) => {
       address,
       city,
       state,
-      postal_code,
-      manager_Name,
-      manager_email
+      postalCode,
+      managerName,
+      managerEmail,
     } = req.body;
     const employee = new Employee({
-      First_Name,
-      Last_Name,
+      firstName,
+      lastName,
       email,
-      contact_number,
+      contactNumber,
       role,
       joining,
       dob,
@@ -62,9 +62,9 @@ app.post("/api/addEmployee", async (req, res) => {
       address,
       city,
       state,
-      postal_code,
-      manager_Name,
-      manager_email,
+      postalCode,
+      managerName,
+      managerEmail,
     });
 
     await employee.save();
