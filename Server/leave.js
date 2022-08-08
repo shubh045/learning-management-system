@@ -30,7 +30,7 @@ mongoose
 app.listen(3200, "127.0.0.1");
 console.log("Node server running on port 3200");
 
-app.post("/api/leaveApply", async (req, res) => {
+app.post("/api/leaveapply", async (req, res) => {
   console.log(req.body);
   try {
     const { dateApplied, leaveType, fromDate, toDate, subject, description } =

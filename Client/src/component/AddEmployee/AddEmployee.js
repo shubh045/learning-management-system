@@ -8,19 +8,19 @@ const Addemp = () => {
 
   const [state, setState] = useState({
     firstName:"",
-      lastName:"",
-      email:"",
-      contactNumber:"",
-      role:"",
-      joining:"",
-      dob:"",
-      gender:"",
-      address:"",
-      city:"",
-      state:"",
-      postalCode:"",
-      managerName:"",
-      managerEmail:"",
+    lastName: "",
+    email:" ",
+    contactNumber:" ",
+    role:"",
+    joining:"",
+    dob: " ",
+    gender: "",
+    address: "",
+    city:"",
+    state:"",
+    postalCode: "",
+    managerName:"",
+    managerEmail:""
   })
 
   const [errorMessage, setErrorMessage] = useState("")
@@ -52,8 +52,6 @@ const Addemp = () => {
     }
     
   }
-
-
   
   return (
     <>
@@ -174,7 +172,7 @@ const Addemp = () => {
                   <h2>Reporting Manager</h2>
                   <div className="disp name">
                     <div className="disp f-name label-i">
-                      <select id="drop-down" name="managerName" value={state.manager_Name} onChange={changeHandler}>
+                      <select id="drop-down" name="managerName" value={state.managerName} onChange={changeHandler}>
                         <option value="Anuj Thakur">Anuj Thakur</option>
                         <option value="Deepak Verna">Deepak Verna</option>
                         <option value="Gurinder Singh">Gurinder Singh</option>
