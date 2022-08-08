@@ -225,10 +225,12 @@ const Addemp = () => {
         <div className="role-modal">
           <div className="role-border">
           <form onSubmit={saveModalHandler}>
-            <h3>Add New Role</h3>
+            <h3 style={{color:"black"}}>Add New Role</h3><br/>
             <input type="text" placeholder="Type Here" />
+            <div  className="btns-role">
             <button type="submit">Save</button>
             <button onClick={() => setIsModalOpen(false)}>Cancel</button>
+            </div>
           </form>
           </div>
         </div>
