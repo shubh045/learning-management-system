@@ -15,9 +15,10 @@ const employee = new mongoose.Schema(
     state: { type: String, require: true },
     postal_code: { type: Number, require: true },
     manager_Name: { type: String, required: true },
-    manager_email:{type:String, required:true}
+    manager_email:{type:String, required:true},
+    password: {type: String}
   },
-  { collation: "employee" }
+  { collation: {locale: 'en_US', strength: 1} },
 );
 
 const Employee = mongoose.model("Employee", employee);
