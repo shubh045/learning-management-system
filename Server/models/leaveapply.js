@@ -12,5 +12,5 @@ const applyLeave = new mongoose.Schema(
   { collation: {locale: "en_US", strength: 1} }
 );
 
-const leaveApply = mongoose.model("leave", applyLeave);
-module.exports = leaveApply;
+const LeaveApply = mongoose.model("leave", applyLeave);
+module.exports = LeaveApply;
