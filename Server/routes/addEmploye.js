@@ -12,7 +12,7 @@ Router.post("/api/addEmployee", async (req, res) => {
   try {
     const {
       firstName,
-      lastName, 
+      lastName,
       email,
       contactNumber,
       role,
@@ -24,7 +24,8 @@ Router.post("/api/addEmployee", async (req, res) => {
       state,
       postalCode,
       managerName,
-      managerEmail, } = req.body;
+      managerEmail,
+    } = req.body;
 
     password = generator.generate({
       length: 12,

@@ -18,7 +18,7 @@ const employee = new mongoose.Schema(
     managerName: { type: String, required: true },
     managerEmail:{type:String, required:true}
   },
-  { collation: "employee" }
+  { collation: {locale: 'en_US', strength: 1} },
 );
 
 const Employee = mongoose.model("Employee", employee);
