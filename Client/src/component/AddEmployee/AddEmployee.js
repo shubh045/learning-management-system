@@ -25,9 +25,15 @@ const Addemp = () => {
 
   const [errorMessage, setErrorMessage] = useState("")
   const [result, setResult] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const changeHandler = (event) => {
     const {name, value} = event.target;
+    if(event.target.name==="role"&&event.target.value==="add-new-role") 
+    {
+      setIsModalOpen(true)
+      return;
+    }
     setState({
       ...state,
       [name]: value
@@ -52,6 +58,13 @@ const Addemp = () => {
     }
     
   }
+
+
+  const saveModalHandler = () => {
+    // appi request and get value from modal
+    setIsModalOpen(false)
+  }
+
   
   return (
     <>
@@ -97,7 +110,10 @@ const Addemp = () => {
                 <div className="disp p-info">
                   <div className="role disp label-i">
                     <label htmlFor="role">Role</label>
-                    <input onChange={changeHandler} name="role" type="text" placeholder="Enter Role" id="role" />
+                    <select onChange={changeHandler} name="role" id="role">
+                      <option value="hr">HR</option>
+                      <option value="add-new-role">Add New Role</option>
+                    </select>
                   </div>
                   <div className="doj disp label-i">
                     <label htmlFor="doj">Joining Date</label>
@@ -204,6 +220,22 @@ const Addemp = () => {
           </div>
         </div>
       </section>
+      {
+        isModalOpen && <>
+        <div className="role-modal">
+          <div className="role-border">
+          <form onSubmit={saveModalHandler}>
+            <h3 style={{color:"black"}}>Add New Role</h3><br/>
+            <input type="text" placeholder="Type Here" />
+            <div  className="btns-role">
+            <button type="submit">Save</button>
+            <button onClick={() => setIsModalOpen(false)}>Cancel</button>
+            </div>
+          </form>
+          </div>
+        </div>
+        </>
+      }
     </>
   );
 };
