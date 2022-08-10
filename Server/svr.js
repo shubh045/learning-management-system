@@ -1,7 +1,7 @@
 const express = require("express") 
 const app = express() 
 const bodyParser = require("body-parser") 
-const PORT = process.env.PORT || 3000 
+const PORT = 3000 
 app.use(express.json())
 app.use(bodyParser.json()) 
 const cors = require("cors")
@@ -32,9 +32,18 @@ function success(res, payload) {
   return res.status(200).json(payload)
 }
 
-app.get("/", async (req, res, next) => {
+app.get("/holiday", async (req, res, next) => {
   try {
     const holi = await Holiday.find()
+    return success(res, holi)
+  } catch (err) {
+    next({ status: 400, message: "failed to get list of holidays" })
+  }
+})
+
+app.get("/holiday/:id", async (req, res, next) => {
+  try {
+    const holi = await Holiday.findById(req.params.id)
     return success(res, holi)
   } catch (err) {
     next({ status: 400, message: "failed to get list of holidays" })

@@ -5,6 +5,7 @@ const holidaySchema = new mongoose.Schema({
   date: {
     type: String,
     required: true,
+    // unique:true,
   },
   event: {
     type: String,
@@ -16,7 +17,3 @@ const Holiday = mongoose.model("Holiday", holidaySchema)
 
 module.exports = Holiday
 
-// GET  /
-// POST /holiday
-// PUT /holiday/:id
-// DELETE /holiday/:id

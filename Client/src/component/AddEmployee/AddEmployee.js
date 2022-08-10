@@ -3,25 +3,24 @@ import React from 'react'
 import { useState } from "react";
 import axios from "axios"
 
-
-
 const Addemp = () => {
+  const today = new Date().toISOString().split('T')[0];
 
   const [state, setState] = useState({
-    First_Name:"",
-      Last_Name:"",
-      email:"",
-      contact_number:"",
-      role:"",
-      joining:"",
-      dob:"",
-      gender:"",
-      address:"",
-      city:"",
-      state:"",
-      postal_code:"",
-      manager_Name:"",
-      manager_email:"",
+    firstName:"",
+    lastName: "",
+    email:" ",
+    contactNumber:" ",
+    role:"",
+    joining:"",
+    dob: " ",
+    gender: "",
+    address: "",
+    city:"",
+    state:"",
+    postalCode: "",
+    managerName:"",
+    managerEmail:""
   })
 
   const [errorMessage, setErrorMessage] = useState("")
@@ -64,7 +63,6 @@ const Addemp = () => {
     // appi request and get value from modal
     setIsModalOpen(false)
   }
-
   
   return (
     <>
@@ -77,7 +75,7 @@ const Addemp = () => {
                 <div className="disp name">
                   <div className="disp f-name label-i">
                     <label htmlFor="fname">First Name</label>
-                    <input onChange={changeHandler} name="First_Name"
+                    <input onChange={changeHandler} name="firstName"
                       type="text"
                       placeholder="Enter first name"
                       id="fname"
@@ -85,7 +83,7 @@ const Addemp = () => {
                   </div>
                   <div className="disp l-name label-i">
                     <label htmlFor="lname">Last Name</label>
-                    <input onChange={changeHandler} name="Last_Name"
+                    <input onChange={changeHandler} name="lastName"
                       type="text"
                       placeholder="Enter Last name"
                       id="lname"
@@ -99,7 +97,7 @@ const Addemp = () => {
                   </div>
                   <div className="phone disp label-i">
                     <label htmlFor="phone">Contact Number</label>
-                    <input onChange={changeHandler} name="contact_number"
+                    <input onChange={changeHandler} name="contactNumber"
                       type="tel"
                       pattern="[0-9]{10}"
                       placeholder="Enter Contact no."
@@ -120,7 +118,7 @@ const Addemp = () => {
                     <input onChange={changeHandler} name="joining"
                       type="date"
                       placeholder="Enter Joining date"
-                      id="doj"
+                      id="doj" max={today}
                     />
                   </div>
                 </div>
@@ -181,14 +179,14 @@ const Addemp = () => {
 
                   <div className="pinc disp label-i">
                     <label htmlFor="pinc">Postal code</label>
-                    <input onChange={changeHandler} name="postal_code" type="number" id="pinc" />
+                    <input onChange={changeHandler} name="postalCode" type="number" id="pinc" />
                   </div>
                 </div>
                 <div className="r-manager">
                   <h2>Reporting Manager</h2>
                   <div className="disp name">
                     <div className="disp f-name label-i">
-                      <select id="drop-down" name="manager_Name" value={state.manager_Name} onChange={changeHandler}>
+                      <select id="drop-down" name="managerName" value={state.managerName} onChange={changeHandler}>
                         <option value="Anuj Thakur">Anuj Thakur</option>
                         <option value="Deepak Verna">Deepak Verna</option>
                         <option value="Gurinder Singh">Gurinder Singh</option>
@@ -197,7 +195,7 @@ const Addemp = () => {
                     </div>
                     <div className="e-mail disp label-i">
                       <label htmlFor="me-mail">Email</label>
-                      <input onChange={changeHandler} name="manager_email"
+                      <input onChange={changeHandler} name="managerEmail"
                         type="text"
                         placeholder="Enter email"
                         id="me-mail"
@@ -209,11 +207,11 @@ const Addemp = () => {
                   <button  onClick={submitHandler} className="btn-add">
                     Add
                   </button>
-                  {errorMessage && <p style={{background: "red", padding: "10px", color: "#fff", maxWidth:"500px"}}>{errorMessage}</p>}
-    {result && <p style={{background: "green", padding: "10px", color: "#fff"}}>{result}</p>}
                   <button type="reset" className="btn-res">
                     Cancel
                   </button>
+                  {errorMessage && <p style={{background: "red", padding: "10px", color: "#fff", maxWidth:"500px"}}>{errorMessage}</p>}
+    {result && <p style={{background: "green", padding: "10px", color: "#fff"}}>{result}</p>}
                 </div>
               </form>
             </div>
