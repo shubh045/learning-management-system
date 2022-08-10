@@ -2,55 +2,116 @@ const { Router } = require("express");
 const Employee = require("../models/employee");
 const route = Router();
 const bcrypt = require("bcryptjs");
-const passport = require("passport")
+const { SuccessObj } = require("./responseMethod");
 
 const {
-  getToken,
-  COOKIE_OPTIONS,
-  getRefreshToken,
-} = require("../strategies/authenticate");
+  accessTokenGenerator,
+  refreshTokenGenerator,
+  jwtValidator,
+} = require("../jwtValidator");
+const { ErrorObj } = require("../handleErrorMiddlerware");
 
-// ...
-
-route.post("/login", passport.authenticate("local"), async (req, res, next) => {
+route.post("/login", async (req, res, next) => {
   try {
-    conssole.log("body", req)
+    /*
+         @parms email, password
+    */
+
     const { email, password } = req.body;
-    const token = getToken({ email: email });
-    const refreshToken = getRefreshToken({ email: email });
-    console.log(`[login][body] ${JSON.stringify(req.body)}`);
-
-    
-
+    // validate email and password required
     if (!email) {
-      return res.status(400).send({ message: "Email is required field" });
+      const error = new ErrorObj(400, "Email is required");
+      next(error);
+      return;
     }
     if (!password) {
-      return res.status(400).send({ message: "Password is required filed" });
+      const error = new ErrorObj(400, "Password is required");
+      next(error);
+      return;
     }
+    // vadate email and password with database
+    const employe = await Employee.findOne({ email });
 
-    const user = await Employee.findOne({ email });
-    console.log("data", user);
-
-    if (!user) {
-      return res.status(400).send({ message: "user not found" });
+    if (!employe) {
+      const error = new ErrorObj(400, "Email is wrong");
+      next(error);
+      return;
     }
+    // check password
+    const validatePassword = await bcrypt.compare(password, employe.password);
 
-    if (!match) {
-      return res.status(400).send({ message: "Password is not correct" });
+    if (!validatePassword) {
+      const error = new ErrorObj(400, "Password is wrong");
+      next(error);
+      return;
     }
-
-    const data = user.toJSON();
-    delete data["password"];
-    const payload = {
-      message: "login successful",
-      data: data,
+    // generate jwt token
+    const jwtPayload = {
+      firstName: employe.firstName,
+      email: employe.email,
+      role: employe.role,
+      id: employe?._id,
     };
+    const accessToken = accessTokenGenerator(jwtPayload);
+    const refreshToken = refreshTokenGenerator(jwtPayload);
 
-    res.send({ ...payload });
+    employe.refreshToken = refreshToken;
+    await employe.save();
+
+    const data = new SuccessObj();
+    data.token = accessToken;
+
+    data.payload = {
+      user: employe.toJSON(),
+    };
+    req.user = { ...jwtPayload };
+    res
+      .cookie("userId", `${employe._id}`, {
+        httpOnly: true,
+        secure: true,
+        maxAge: 86400,
+      })
+      .cookie("jwt", accessToken, {
+        httpOnly: true,
+        secure: true,
+        maxAge: 86400,
+      })
+      .json({ ...data });
   } catch (error) {
-    console.log(`login error ${error}`);
-    res.status(500).send({ messgae: error.message });
+    console.log(error);
+    next(error);
+  }
+});
+
+route.get("/profile", jwtValidator, async (req, res, next) => {
+  try {
+    const user = await Employee.findById(req.user.id);
+    const data = new SuccessObj();
+
+    data.payload = {
+      user: user.toJSON(),
+    };
+    res.json({ ...data });
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
+
+route.post("/logout", jwtValidator, async (req, res, next) => {
+  try {
+    const user = await Employee.findById(req.user.id);
+    if (user) {
+      user.refreshToken = "";
+      await user.save();
+    }
+    const data = new SuccessObj();
+    res
+      .clearCookie("userId")
+      .clearCookie("jwt")
+      .json({ ...data });
+  } catch (err) {
+    next(err);
   }
 });
 

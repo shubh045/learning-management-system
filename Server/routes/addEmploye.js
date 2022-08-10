@@ -6,6 +6,7 @@ const Employee = require("../models/employee");
 const { sendEmail } = require("../emailService");
 
 const generator = require("generate-password");
+const { SuccessObj } = require("./responseMethod");
 const Router = express.Router();
 
 Router.post("/api/addEmployee", async (req, res) => {
@@ -34,7 +35,7 @@ Router.post("/api/addEmployee", async (req, res) => {
 
     const salt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(password, salt);
-
+  
     const employee = new Employee({
       firstName,
       lastName,
@@ -61,12 +62,13 @@ Router.post("/api/addEmployee", async (req, res) => {
       html: addEmployeeEmail(firstName, password),
     };
 
-    const data = await sendEmail(mailOptions);
+    await sendEmail(mailOptions);
 
-    res.status(200).json({
-      status: "200",
-      message: "Employee register successfully",
-    });
+    const data = new SuccessObj();
+      data.message = "Register successfuly";
+
+
+      res.status(201).json({ ...data });
   } catch (err) {
     console.log(err);
     res.json({ status: "error", error: err.message });

@@ -3,30 +3,17 @@ const Login = require("./routes/login");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const { handleError } = require("./handleErrorMiddlerware");
+
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
-const addEmailRoute = require("./routes/addEmploye");
+const addEmployeRoute = require("./routes/addEmploye");
 const Role = require("./models/role");
 const cookieParser = require("cookie-parser");
-const session = require('cookie-session');
-const passport = require("passport");
 
 const Employee = require("./models/employee")
 
-require("./strategies/jwtStrategy")
-require("./strategies/localStrategy")
-require("./strategies/authenticate")
-
 
 const app = express();
-
-app.use(express.json());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json({ type: "application/*+json" }));
-app.use(bodyParser.json({ type: "application/vnd.api+json" }));
-app.use(cookieParser(process.env.COOKIE_SECRET));
-// app.use(session({keys: ['secretkey1', 'secretkey2']}));
 
 const whitelist = process.env.WHITELISTED_DOMAINS
   ? process.env.WHITELISTED_DOMAINS.split(",")
@@ -42,11 +29,27 @@ const corsOptions = {
   },
 
   credentials: true,
+  exposedHeaders: ["set-cookie"],
 }
-
 app.use(cors(corsOptions))
-app.use(passport.initialize())
-app.use(passport.session());
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
+app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({ type: "application/*+json" }));
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+app.use(cookieParser());
+// app.use(session({keys: ['secretkey1', 'secretkey2']}));
+
+
+
+
 
 
 const dbUrl =
@@ -67,45 +70,16 @@ mongoose
 // Api routes
 // app.use(login)
 // app.midelerware
-app.use(addEmailRoute);
+
+
+
+
 app.use(Login);
+app.use(addEmployeRoute);
 
 app.listen(3100, "127.0.0.1");
 console.log("Node server running on port 3100");
 
-app.post("/user", async (req, res) => {
-  Employee.register(new Employee({email: req.body.email})),
-  req.body.password, 
-  (err, emp) => {
-    if(err){
-      res.statusCode = 500
-      res.send(err)
-    } else {
-      emp.firstName = "anuj"
-      emp.lastName = "thakur"
-      emp.contactNumber="76899900"
-      emp.role= "principal-engineer"
-      emp.joining = "26"
-      emp.dob = "260"
-      emp.gender = "m"
-      emp.address="chandigarh"
-      emp.city="chandigarh"
-      emp.state="chandigarh"
-      emp.postalCode="111222"
-      emp.save((err, user) => {
-        if(err){
-          res.statusCode = 500
-          res.send(err)
-        } else {
-          res.send({
-            success: true,
-            user: user
-          })
-        }
-      })
-    }
-  }
-})
 
 app.get("/api/managerlist");
 app.post("/api/addRole", async (req, res) => {
@@ -141,3 +115,5 @@ app.get("/api/roleList", async (req, res) => {
       });
     });
 });
+
+app.use(handleError);

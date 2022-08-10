@@ -1,12 +1,4 @@
 const mongoose = require("mongoose");
-const passportLocalMongoose = require("passport-local-mongoose")
-
-const Session = new mongoose.Schema({
-  refreshToken: {
-    type: String,
-    default: "",
-  },
-})
 
 const Employee = new mongoose.Schema(
   {
@@ -25,12 +17,11 @@ const Employee = new mongoose.Schema(
     postalCode: { type: Number, require: true },
     managerName: { type: String, }, // TODO Fix this
     managerEmail:{type:String,},
-    refreshToken: {
-      type: [Session],
-    },
+    refreshToken: {type: String},
   },
   { collation: {locale: 'en_US', strength: 1} },
 );
+
 
 //Remove refreshToken from the response
 Employee.set("toJSON", {
@@ -40,13 +31,6 @@ Employee.set("toJSON", {
     return ret
   },
 })
-
-const option = {
-  usernameField: "email"
-}
-
-Employee.plugin(passportLocalMongoose, option)
-
 
 module.exports = mongoose.model("Employee", Employee);
 
