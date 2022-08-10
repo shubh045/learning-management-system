@@ -11,6 +11,7 @@ import History from "./component/History/history"
 import PendingRequest from './component/PendingRequest/pendreq'
 import CalendarTable from "./component/Calendar/CalendarTable";
 import Empholiday from "./component/Empholiday/Empholiday"
+import Holiday from "./component/Holiday/Holiday";
 
 const Routes = () => useRoutes([
     {
@@ -52,8 +53,12 @@ const Routes = () => useRoutes([
             element: <PendingRequest/>,
           },
           {
-            path: "/Holiday",
+            path: "/Calendar",
             element: <CalendarTable/>,
+          },
+          {
+            path: "/holiday",
+            element: <Holiday/>,
           },
       ],
     },

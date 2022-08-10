@@ -1,7 +1,7 @@
 const express = require("express") 
 const app = express() 
 const bodyParser = require("body-parser") 
-const PORT = 3000 
+const PORT = 3500 
 app.use(express.json())
 app.use(bodyParser.json()) 
 const cors = require("cors")

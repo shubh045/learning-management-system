@@ -8,10 +8,13 @@ import "@fullcalendar/daygrid/main.css";
 import "@fullcalendar/timegrid/main.css";
 import events from "./Event";
 import "./calendarTable.css"
+import DispHolidays from "./DispHolidays"
+
 
 export default function CalendarTable() {
   return (
     <div className="calendar">
+      <div className="cal">
       <FullCalendar
         defaultView="dayGridMonth"
         // themeSystem="Simplex"
@@ -24,7 +27,8 @@ export default function CalendarTable() {
         events={events}
         displayEventEnd="true"
         eventColor={"#" + Math.floor(Math.random() * 16777215).toString(16)}
-      />
+      /></div>
+      <DispHolidays/>
     </div>
   );
 }
