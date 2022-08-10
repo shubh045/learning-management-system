@@ -58,13 +58,19 @@ const Addemp = () => {
     }
     
   }
+<<<<<<< HEAD
+=======
 
+>>>>>>> bbf068efeea12830ed1b743fc6f807df4d2fe83d
 
   const saveModalHandler = () => {
     // appi request and get value from modal
     setIsModalOpen(false)
   }
+<<<<<<< HEAD
+=======
 
+>>>>>>> bbf068efeea12830ed1b743fc6f807df4d2fe83d
   
   return (
     <>

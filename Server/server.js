@@ -7,6 +7,7 @@ const { handleError } = require("./handleErrorMiddlerware");
 
 const jwt = require("jsonwebtoken");
 const addEmployeRoute = require("./routes/addEmploye");
+const sendLeave = require("./routes/sendLeave");
 const Role = require("./models/role");
 const cookieParser = require("cookie-parser");
 
@@ -77,6 +78,7 @@ mongoose
 
 app.use(Login);
 app.use(addEmployeRoute);
+app.use(sendLeave);
 
 app.listen(3100, "127.0.0.1");
 console.log("Node server running on port 3100");
