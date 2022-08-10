@@ -63,12 +63,13 @@ export default function Loginfo() {
           onClick={submitChange}
         />{" "}
         &nbsp;&nbsp;
-        {errorMessage && <p style={{background: "red", padding: "10px", color: "#fff", maxWidth:"500px"}}>{errorMessage}</p>}
+        {/* {errorMessage && <p style={{background: "red", padding: "10px", color: "#fff", maxWidth:"500px"}}>{errorMessage}</p>} */}
         <input
           type="button"
           value="Forgot Password"
           id="forgot"
         />
+        {errorMessage && <p style={{background: "red", padding: "10px", color: "#fff", maxWidth:"500px"}}>{errorMessage}</p>}
       </form>
       <Eight />
     </div>

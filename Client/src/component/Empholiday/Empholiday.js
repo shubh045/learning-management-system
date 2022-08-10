@@ -27,7 +27,7 @@ const Empholiday = () => {
           <div className="emph">
             <h3>Employees on Leave Today </h3>
             <br />
-            <table className="tbl" id="tbl">
+            <table className="tbl" border={1} id="tbl">
               <thead>
               <tr>
                 <th>Employee Name</th>
