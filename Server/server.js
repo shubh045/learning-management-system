@@ -1,4 +1,5 @@
 const express = require("express");
+const User = require("./User");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -12,8 +13,9 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json({ type: 'application/*+json' }))
+app.use(bodyParser.json({ type: "application/*+json" }));
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+app.use("/user", User);
 
 const dbUrl =
   "mongodb+srv://Admin:VIPZb498zKAImRYQ@cluster0.zvzw94r.mongodb.net/?retryWrites=true&w=majority";
@@ -30,18 +32,15 @@ mongoose
     console.log("Error:", e);
   });
 
-  // Api routes
-  // app.use(login)
-  // app.midelerware
-  app.use(addEmailRoute)
+// Api routes
+// app.use(login)
+// app.midelerware
+app.use(addEmailRoute);
 
 app.listen(3100, "127.0.0.1");
 console.log("Node server running on port 3100");
 
-
-app.get("/api/managerlist")
-
-
+app.get("/api/managerlist");
 app.post("/api/addRole", async (req, res) => {
   console.log(req.body);
   try {
@@ -61,19 +60,17 @@ app.post("/api/addRole", async (req, res) => {
   }
 });
 
-
-
-app.get("/api/roleList",async (req, res) =>{
+app.get("/api/roleList", async (req, res) => {
   Role.find()
- .then(result=>{
-   res.status(200).json({
-     roleData:result
-   });
- })
- .catch(err=>{
-   console.log(err);
-   res.status(500).json({
-     error:err
-   })
- })
-})
+    .then((result) => {
+      res.status(200).json({
+        roleData: result,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        error: err,
+      });
+    });
+});

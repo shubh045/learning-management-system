@@ -58,11 +58,19 @@ const Addemp = () => {
     }
     
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> bbf068efeea12830ed1b743fc6f807df4d2fe83d
 
   const saveModalHandler = () => {
     // appi request and get value from modal
     setIsModalOpen(false)
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> bbf068efeea12830ed1b743fc6f807df4d2fe83d
   
   return (
     <>
@@ -223,10 +231,12 @@ const Addemp = () => {
         <div className="role-modal">
           <div className="role-border">
           <form onSubmit={saveModalHandler}>
-            <h3>Add New Role</h3>
+            <h3 style={{color:"black"}}>Add New Role</h3><br/>
             <input type="text" placeholder="Type Here" />
+            <div  className="btns-role">
             <button type="submit">Save</button>
             <button onClick={() => setIsModalOpen(false)}>Cancel</button>
+            </div>
           </form>
           </div>
         </div>

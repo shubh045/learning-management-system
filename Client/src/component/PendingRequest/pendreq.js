@@ -36,6 +36,12 @@ const Pendreq = () => {
     }
   }
 
+  const [status, setStatus] = useState("");
+  const statusHandler = (val) => {
+    setStatus(val);
+  };
+  console.log(status);
+
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       {[...leaveData].map((emp, index) => {
@@ -53,8 +59,18 @@ const Pendreq = () => {
             <div className="emname">
               <label>Employee Name: {}</label>
               <div className="button">
-                <Response response="Accept" className="b1" />
-                <Response response="Reject" className="b2" />
+                <Response
+                  response="Accept"
+                  className="b1"
+                  statusHandler={() => statusHandler("Accepted")}
+                  status={status}
+                />
+                <Response
+                  response="Reject"
+                  className="b2"
+                  statusHandler={() => statusHandler("Rejected")}
+                  status={status}
+                />
                 <DescButton
                   handleClick={handleClick}
                   arrow={state.arrow}
