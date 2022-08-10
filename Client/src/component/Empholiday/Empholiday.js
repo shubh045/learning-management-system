@@ -28,26 +28,31 @@ const Empholiday = () => {
             <h3>Employees on Leave Today </h3>
             <br />
             <table className="tbl" id="tbl">
+              <thead>
               <tr>
                 <th>Employee Name</th>
                 <th>Role</th>
                 <th>Reporting Manager</th>
               </tr>
+              </thead>
+              <tbody>
+              
               <tr>
-                <th>Shubham</th>
-                <th>HR</th>
-                <th>Admin</th>
+                <td>Shubham</td>
+                <td>HR</td>
+                <td>Admin</td>
               </tr>
               <tr>
-                <th>Shivansh</th>
-                <th>Engineering Intern</th>
-                <th>Anuj</th>
+                <td>Shivansh</td>
+                <td>Engineering Intern</td>
+                <td>Anuj</td>
               </tr>
               <tr>
-                <th>Sunny</th>
-                <th>Engineering Intern</th>
-                <th>Anuj</th>
+                <td>Sunny</td>
+                <td>Engineering Intern</td>
+                <td>Anuj</td>
               </tr>
+              </tbody>
             </table>
           </div>
           <div className="piec">
@@ -70,13 +75,13 @@ const Empholiday = () => {
             </PieChart>
             <div className="leave-con">
               <p className="leaves">
-                <div className="col-block m-leave"></div>Medical leave
+                <span className="col-block m-leave"></span>Medical leave
               </p>
               <p className="leaves">
-                <div className="col-block c-leave"></div>Casual leave
+                <span className="col-block c-leave"></span>Casual leave
               </p>
               <p className="leaves">
-                <div className="col-block p-leave"></div>Parental leave
+                <span className="col-block p-leave"></span>Parental leave
               </p>
             </div>
           </div>
