@@ -7,7 +7,7 @@ const DispHolidays = () => {
   const [list, setList] = useState([]);
   const fetchLlist = async () => {
     await axios
-    .get("http://localhost:3500/holiday")
+    .get("http://localhost:3100/holiday")
     .then((res) => {
       setList(res.data);
     })

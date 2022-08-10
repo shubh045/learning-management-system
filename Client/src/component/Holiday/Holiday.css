@@ -62,7 +62,13 @@
     left:30%;
     margin-left:auto;
 }
-
+.c{
+    cursor: pointer;
+    color:purple;
+}
+.c:hover{
+    color:rgb(40, 1, 40);
+}
 .addbtn{
     color:purple;
     background: pink;
