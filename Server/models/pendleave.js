@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const leavePend = new mongoose.Schema(
   {
-    status: {type: String, required: true},
+    status: {type: String},
     dateApplied: {type: Date},
     leaveType: { type: String, required: true },
     fromDate: { type: Date, required: true },
@@ -11,7 +11,7 @@ const leavePend = new mongoose.Schema(
     description: { type: String, required: true }
   },
   { collation: "pendingleave" }
-);
+); 
 
 const pendLeave = mongoose.model("pendingleave", leavePend);
 module.exports = pendLeave;
