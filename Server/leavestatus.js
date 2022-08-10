@@ -33,8 +33,16 @@ console.log("Node server running on port 3300");
 app.post("/api/leavestatus", async (req, res) => {
   console.log(req.body);
   try {
-    const { status, dateApplied, leaveType, fromDate, toDate, subject, description } =
-      req.body;
+    const {
+      status,
+      dateApplied,
+      leaveType,
+      fromDate,
+      toDate,
+      subject,
+      description,
+    } = req.body;
+
     const leavestat = new leaveStatus({
       status,
       dateApplied,

@@ -9,7 +9,7 @@ const applyLeave = new mongoose.Schema(
     subject: { type: String, required: true },
     description: { type: String, required: true }
   },
-  { collation: "leave" }
+  { collation: {locale: "en_US", strength: 1} }
 );
 
 const LeaveApply = mongoose.model("leave", applyLeave);

@@ -1,0 +1,80 @@
+.holimain{
+    display:flex;
+    flex-direction: column;
+    width:50vw;
+    align-items: center;
+    margin: auto;
+    /* background-color: bisque; */
+    font-family: "lato";
+    margin-top: 7%;
+    height: 70vh;
+    overflow-y: scroll;
+}
+
+.holilistb tr td{
+    text-align: center ;
+    border-top: 1px solid black;
+}
+
+.holilistb tr{
+    height: 25px;
+}
+.holilistb tr:hover{
+    background: plum;
+}
+
+.holilisth tr th{
+    border-top: 1px solid black;
+}
+
+.symbol{
+    height: 35px;
+    width:35px;
+    transition-duration: 1s;
+    cursor: pointer;
+}
+
+.small{
+    height: 20px;
+    width:20px;
+    padding:10px;
+}
+
+.symbol:hover{
+    transform: scale(1.1);
+}
+
+.holilist{
+width:100%;
+border-bottom: 1px solid black;
+}
+
+.holilist caption{
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+#dte,#evnt{
+    height: 30px;
+    width:20%;
+    font-size: large;
+    font-weight: bold;
+}
+
+.holilist thead{
+    font-size: 25px;
+}
+
+.holilist tbody{
+    font-size: 20px;
+}
+
+.holiadd{
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    /* justify-content: space-around; */
+    justify-content: center;
+    gap:20%;
+    align-items: center;  
+}

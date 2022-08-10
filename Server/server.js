@@ -1,19 +1,59 @@
 const express = require("express");
+const Login = require("./routes/login");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const Employee = require("./models/employee");
+const { handleError } = require("./handleErrorMiddlerware");
+
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+const addEmployeRoute = require("./routes/addEmploye");
+const Role = require("./models/role");
+const cookieParser = require("cookie-parser");
+
+const Employee = require("./models/employee")
+
+
 const app = express();
-app.use(cors());
+
+const whitelist = process.env.WHITELISTED_DOMAINS
+  ? process.env.WHITELISTED_DOMAINS.split(",")
+  : []
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error("Not allowed by CORS"))
+    }
+  },
+
+  credentials: true,
+  exposedHeaders: ["set-cookie"],
+}
+app.use(cors(corsOptions))
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({ type: "application/*+json" }));
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+app.use(cookieParser());
+// app.use(session({keys: ['secretkey1', 'secretkey2']}));
+
+
+
+
+
 
 const dbUrl =
-  "mongodb+srv://Admin:VIPZb498zKAImRYQ@cluster0.zvzw94r.mongodb.net/?retryWrites=true&w=majority";
+  process.env.MONGO_DB_CONNECTION_STRING;
 const connectionParams = {
   useNewUrlParser: true,
 };
@@ -21,59 +61,59 @@ const connectionParams = {
 mongoose
   .connect(dbUrl, connectionParams)
   .then(() => {
-    console.info("connectd to DB");
+    console.info("connected to DB");
   })
   .catch((e) => {
     console.log("Error:", e);
   });
 
+// Api routes
+// app.use(login)
+// app.midelerware
+
+
+
+
+app.use(Login);
+app.use(addEmployeRoute);
 
 app.listen(3100, "127.0.0.1");
 console.log("Node server running on port 3100");
 
-app.post("/api/addEmployee", async (req, res) => {
+
+app.get("/api/managerlist");
+app.post("/api/addRole", async (req, res) => {
   console.log(req.body);
   try {
-    const {
-      First_Name,
-      Last_Name,
-      email,
-      contact_number,
-      role,
-      joining,
-      dob,
-      gender,
-      address,
-      city,
-      state,
-      postal_code,
-      manager_Name,
-      manager_email
-    } = req.body;
-    const employee = new Employee({
-      First_Name,
-      Last_Name,
-      email,
-      contact_number,
-      role,
-      joining,
-      dob,
-      gender,
-      address,
-      city,
-      state,
-      postal_code,
-      manager_Name,
-      manager_email,
+    const { designation } = req.body;
+    const role = new Role({
+      designation,
     });
 
-    await employee.save();
+    await role.save();
 
     res.status(200).json({
       status: "200",
-      message: "Employee register successfully",
+      message: "designation added sucessfully",
     });
   } catch (err) {
     res.json({ status: "error", error: err.message });
   }
 });
+
+app.get("/api/roleList", async (req, res) => {
+  Role.find()
+    .then((result) => {
+      res.status(200).json({
+        roleData: result,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        error: err,
+      });
+    });
+});
+
+app.use(handleError);

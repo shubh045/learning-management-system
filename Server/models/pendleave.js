@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const leavePend = new mongoose.Schema(
   {
-    status: {type: String, required: true},
+    status: {type: String},
     dateApplied: {type: Date},
     leaveType: { type: String, required: true },
     fromDate: { type: Date, required: true },

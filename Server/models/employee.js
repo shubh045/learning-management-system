@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 
-const employee = new mongoose.Schema(
+const Employee = new mongoose.Schema(
   {
-    First_Name: { type: String, required: true },
-    Last_Name: { type: String, required: true },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    contact_number: { type: Number, require: true, unique: true },
+    password:{type:String,required:true},
+    contactNumber: { type: Number, require: true, unique: true },
     role: { type: String, require: true },
     joining: { type: Date, require: true },
     dob: { type: Date, require: true },
@@ -13,12 +14,23 @@ const employee = new mongoose.Schema(
     address: { type: String, require: true },
     city: { type: String, require: true },
     state: { type: String, require: true },
-    postal_code: { type: Number, require: true },
-    manager_Name: { type: String, required: true },
-    manager_email:{type:String, required:true}
+    postalCode: { type: Number, require: true },
+    managerName: { type: String, }, // TODO Fix this
+    managerEmail:{type:String,},
+    refreshToken: {type: String},
   },
-  { collation: "employee" }
+  { collation: {locale: 'en_US', strength: 1} },
 );
 
-const Employee = mongoose.model("Employee", employee);
-module.exports = Employee;
+
+//Remove refreshToken from the response
+Employee.set("toJSON", {
+  transform: function (doc, ret, options) {
+    delete ret.refreshToken
+    delete ret.password
+    return ret
+  },
+})
+
+module.exports = mongoose.model("Employee", Employee);
+
