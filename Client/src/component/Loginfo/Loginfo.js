@@ -1,29 +1,33 @@
 import React from 'react'
-import axios from 'axios';
 import './Loginfo.css'
 import { useState } from 'react';
 import Eight from '../EightLogo/Eight';
 import { useNavigate } from 'react-router-dom'
+import { useAuthContext } from '../../AuthContext';
+import axiosInstance from '../axios';
 
 export default function Loginfo() {
   const navigate = useNavigate();
   const [email, changeEmail] = useState("");
   const [password, changePassword] = useState("");
   const [errorMessage, changeErrorMessage] = useState('');
+  const {user, updateUser} = useAuthContext()
+
   const submitChange =  (e) => {
     console.log(email, password);
     e.preventDefault();
-    axios
-      .post('http://127.0.0.1:3100/user/login', { email, password })
+    axiosInstance
+      .post('login', { email, password })
       .then((response) => {
+        console.log(response)
+        // localStorage.setItem('jwtToken', response.data.token)
+        // axiosInstance.defaults.headers.common['Authorization'] = response.data.token
+        updateUser(response.data.payload.user)
         navigate('/');
         console.log(JSON.stringify(response));
       })
       .catch((error) => {
-        console.log("not authenticated");
-        console.log(JSON.stringify(error));
-        console.log(JSON.stringify(error.data));
-        changeErrorMessage('email or password is not correct');
+        changeErrorMessage('email or password is not correct', error);
       });
   };
   return (
