@@ -34,7 +34,7 @@ const Profile = () => {
       <Link to={"/apply-leave"}>Apply Leave</Link><br />
       <Link to={"/login"}>Login</Link> */}
       <div className='profsubcont end'>
-      <Link to={"/profile"} onClick={fetchUser} className='profbtn'>Profile</Link>
+      <Link to={"/profile"} className='profbtn'>Profile</Link>
       <Link to="" onClick={logout} className='profbtn'>Logout</Link><br/>
       </div>
     </div>
