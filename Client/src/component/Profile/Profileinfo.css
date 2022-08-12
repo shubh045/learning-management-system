@@ -1,0 +1,74 @@
+.info{
+    font-family: "lato";
+    padding-top: 1%;
+    background:rgb(248, 229, 249) ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+    color: #5b0583;
+    font-weight:bolder;
+    width: 100%;
+}
+.tinfo{
+    background: #5b0583;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+    height: 30vh;
+}
+.image{
+    height:150px;
+    width:150px;
+    border-radius: 100px;
+    box-shadow: 0px 0px 10px #35034c;
+}
+#myipt{
+    background: transparent;
+    border: none;
+    color: rgb(255, 209, 255);
+    font-size: larger;
+    font-weight: bolder;
+    width: auto;
+}
+#myip{
+    background: transparent;
+    border: none;
+    font-size: medium;
+    font-weight: normal;
+    width: auto;
+    color: #5b0583;
+}
+.minfo{
+    width: 100%;
+    display: flex;
+    height: 35vh;
+    flex-direction: row;
+    justify-content: center;
+    gap:50px;
+}
+
+.binfo{
+    display: flex;
+    flex-direction: row;
+    gap:40px;
+}
+.edit,.changepass{
+    border-radius: 5px;
+    height:30px;
+    background:#5b0583;
+    color: rgb(255, 219, 255);
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+.edit:hover,.changepass:hover{
+    box-shadow: 0px 0px 6px #35034c;
+    text-shadow: 0px 0px 5px purple;
+    transform: TranslateY(4px);
+}

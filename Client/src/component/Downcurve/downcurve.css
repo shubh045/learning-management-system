@@ -1,0 +1,16 @@
+.downcurve::after{
+    content: "";
+    width:200%;
+    height:20vh;
+    display: block;
+    background-color:  #470168;
+    border-radius: 50%;
+    transform: rotate(0deg);
+    top: 50px;
+    left: -100px;
+    position: relative;
+}
+.downcurve{
+  overflow: hidden;
+  width: 100%;
+}

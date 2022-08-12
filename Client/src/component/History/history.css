@@ -1,0 +1,88 @@
+.his-con{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.empnam{
+    background-color: green;
+    border-color: green;
+    display: flex;
+    border-style: solid;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 7px;
+}
+
+.empnam button{
+    margin-left: 7px;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.empna button{
+    margin-left: 7px;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.empna{
+    background-color: #d72117;
+    border-color: #d72117;
+    display: flex;
+    border-style: solid;
+    justify-content: space-between;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    align-items: center;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 7px;
+}
+
+.subjec{
+    border-style: solid;
+    border-top: 0;
+    border-color:rgba(99, 9, 99, 0.295);
+    background-color: rgba(99, 9, 99, 0.295);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px;
+}
+.filter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.filter input{
+    width: 190px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.subje{
+    border-style: solid;
+    border-top: 0;
+    border-color:rgba(99, 9, 99, 0.295);
+    background-color: rgba(99, 9, 99, 0.295);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px;
+}
+
+.b31{
+    background-color:rgb(193, 192, 192);
+    border: none;
+    color:#440263;
+}
+
+.b31:hover{
+    background-color:white;
+}

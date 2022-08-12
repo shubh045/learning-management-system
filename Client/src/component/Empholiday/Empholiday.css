@@ -1,0 +1,100 @@
+.home-page{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.list-items{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.emph{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px;
+}
+ 
+.emph table{
+    width: 97%;
+    height: 100%;
+}
+
+h3{
+    text-align: center;
+    color: #440263;
+
+}
+
+.card{
+    width: 100%;
+}
+
+.card-list{
+    width: 95%;
+    border: #440263 2px solid;   
+    margin: 10px;
+    padding: 0;
+}
+
+.card-list li{
+    text-align: left;
+    padding: 10px;
+    margin: 10px;
+    border-bottom: 2px solid #440263;
+
+}
+
+.card-list li:last-child{
+    border-bottom: none;
+}
+
+.card-list h3{
+    text-align: left;
+    padding: 10px;
+    border-bottom: 2px solid #440263;
+}
+
+.piet{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.piec{
+    margin: 10px;
+    height: 100%;
+}
+
+.col-block{
+    height: 10px;
+    width: 10px;
+    margin-right: 3px;
+}
+
+.leaves{
+    display: flex;
+    align-items: center;
+}
+
+.m-leave{
+    background-color: #0088FE;
+}
+
+.c-leave{
+    background-color: #00C49F;
+}
+
+.p-leave{
+    background-color: #FFBB28;
+}
+
+.leave-con{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 0;
+}
+
