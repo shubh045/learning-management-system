@@ -1,0 +1,16 @@
+.holilistt{
+    width:25vw;
+    font-family: "lato";
+    font-size: larger;
+    height:100%;
+    overflow-y: scroll;
+    border-left: 2px solid black;
+}
+.holif{
+    font-size:30px;
+    font-weight: bolder;
+    text-decoration: underline;
+}
+.holilistt li{
+    padding: 7px;
+}

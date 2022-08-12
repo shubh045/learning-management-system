@@ -1,6 +1,12 @@
-.calwrap{
+.calendar{
     display: flex;
-    justify-content:center;
-    padding-right:10%;
-    padding-top:10% ;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    width:100%;
+    background: rgb(255, 249, 255);
+    align-items: center;
+}
+.cal{
+    width:50vw;
 }

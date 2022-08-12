@@ -1,21 +1,22 @@
-/* .teams{      
-     margin-top: 10%;    
+.teams{      
+     /* margin-top: 10%;    
     margin-left: 20%;       
-     background: linear-gradient(white, rgb(231, 197, 236));           
-}  */
+     background: linear-gradient(white, rgb(231, 197, 236));            */
+     margin: auto;
+} 
 .table {
   margin: 0% auto;
   width: 70vw;
-  height:86.5vh;
+  /* height:86.5vh; */
 }
-tr:hover {
+.table tr:hover {
   background-color: #d8a9ed;
 }
-tr:nth-child(even) {
+.table tr:nth-child(even) {
   background-color: #c286de;
 }
 
-th {
+.table tr th {
   padding-top: 50px;
   padding-bottom: 50px;
   text-align: center;
@@ -34,7 +35,7 @@ th {
 #id4 {
   border-radius: 0px 0px 20px 0px;
 }
-td {
+.table tr td {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
