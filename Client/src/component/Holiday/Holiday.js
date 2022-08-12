@@ -141,7 +141,7 @@ const Holiday = () => {
               <div className='popup'>
                   <div className='holiadd'>
           
-                  <input type="date" id="dte" placeholder='date' onChange={changeHandler} name="date" min="2022-08-10" max="2022-12-31"/>
+                  <input type="date" id="dte" placeholder='date' onChange={changeHandler} name="date" min="2022-08-12" max="2022-12-31"/>
                     
                   <input type="text" id="evnt" placeholder='Event' onChange={changeHandler} name="event" maxLength="30"></input>
                     
@@ -158,7 +158,7 @@ const Holiday = () => {
                   <div className='popup'>
                   <div className='holiadd'>
           
-                  <input type="date" id="dte" placeholder='date' onChange={changeHandler} name="date" min="2022-08-10" />
+                  <input type="date" id="dte" placeholder='date' onChange={changeHandler} name="date" min="2022-08-12" />
                     
                   <input type="text" id="evnt" placeholder='Event' onChange={changeHandler} name="event" maxLength="30"></input>
                     
