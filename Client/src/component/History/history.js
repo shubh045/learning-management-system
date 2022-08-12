@@ -59,7 +59,50 @@ const History = () => {
   }
 
   function historyAll() {
-    if (status==="Accepted") {
+    if (userEmail===user.email){
+      if (status==="Accepted") {
+        return(
+          <>
+            <div className="empnam">
+              <p><b>Leave Accepted</b></p>
+              <div className="button">
+                <p style={{display:"inline-block"}}><b>Leave Accepted</b></p>
+                {button()}
+              </div>
+            </div>
+            <div className="subjec">
+              <p style={{ padding: "7px" }}>Date of Leave applied: {dateApplied}</p>
+              <p style={{ padding: "7px" }}>Type of Leave: {leaveType}</p>
+              <p style={{ padding: "7px" }}>Subject: {subject}</p>
+              {extend()}
+            </div>
+          </>
+        )
+      }
+      else {
+        return(
+          <>
+          <div className="empna">
+              <p><b>Leave Rejected</b></p>
+              <div className="button">
+                <p  style={{display:"inline-block"}}><b>Leave Rejected</b></p>
+                {button()}
+              </div>
+            </div>
+            <div className="subje">
+              <p style={{ padding: "7px" }}>Date of Leave applied: {dateApplied}</p>
+              <p style={{ padding: "7px" }}>Type of Leave: {leaveType}</p>
+              <p style={{ padding: "7px" }}>Subject: {subject}</p>
+              {extend()}
+            </div>
+          </>
+        )
+      }
+    }
+  }
+
+  function historyAccepted() {
+    if (userEmail===user.email && status==="Accepted") {
       return(
         <>
           <div className="empnam">
@@ -78,51 +121,10 @@ const History = () => {
         </>
       )
     }
-    else {
-      return(
-        <>
-        <div className="empna">
-            <p><b>Leave Rejected</b></p>
-            <div className="button">
-              <p  style={{display:"inline-block"}}><b>Leave Rejected</b></p>
-              {button()}
-            </div>
-          </div>
-          <div className="subje">
-            <p style={{ padding: "7px" }}>Date of Leave applied: {dateApplied}</p>
-            <p style={{ padding: "7px" }}>Type of Leave: {leaveType}</p>
-            <p style={{ padding: "7px" }}>Subject: {subject}</p>
-            {extend()}
-          </div>
-        </>
-      )
-    }
   }
 
   function historyAccepted() {
-    if (status==="Accepted") {
-      return(
-        <>
-          <div className="empnam">
-            <p><b>Leave Accepted</b></p>
-            <div className="button">
-              <p style={{display:"inline-block"}}><b>Leave Accepted</b></p>
-              {button()}
-            </div>
-          </div>
-          <div className="subjec">
-            <p style={{ padding: "7px" }}>Date of Leave applied: {dateApplied}</p>
-            <p style={{ padding: "7px" }}>Type of Leave: {leaveType}</p>
-            <p style={{ padding: "7px" }}>Subject: {subject}</p>
-            {extend()}
-          </div>
-        </>
-      )
-    }
-  }
-
-  function historyAccepted() {
-    if (status==="Rejected") {
+    if (userEmail===user.email && status==="Rejected") {
       return(
         <>
           <div className="empna">
