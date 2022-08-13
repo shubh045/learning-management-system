@@ -42,6 +42,7 @@ app.post("/api/leaveapply", async (req, res) => {
       toDate,
       subject,
       description,
+      managerEmail,
     });
 
     await leave.save();

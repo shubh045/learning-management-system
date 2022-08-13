@@ -7,10 +7,12 @@ const { handleError } = require("./handleErrorMiddlerware");
 
 const jwt = require("jsonwebtoken");
 const addEmployeRoute = require("./routes/addEmploye");
+const sendLeave = require("./routes/sendLeave");
 const Role = require("./models/role");
 const cookieParser = require("cookie-parser");
 
 const Employee = require("./models/employee")
+const Holiday= require("./models/holiday") 
 
 
 const app = express();
@@ -76,6 +78,7 @@ mongoose
 
 app.use(Login);
 app.use(addEmployeRoute);
+app.use(sendLeave);
 
 app.listen(3100, "127.0.0.1");
 console.log("Node server running on port 3100");
@@ -115,5 +118,82 @@ app.get("/api/roleList", async (req, res) => {
       });
     });
 });
+
+function success(res, payload) {
+  return res.status(200).json(payload)
+}
+
+app.get("/holiday", async (req, res, next) => {
+  try {
+    const holi = await Holiday.find().sort({"date":1})
+    return success(res, holi)
+  } catch (err) {
+    next({ status: 400, message: "failed to get list of holidays" })
+  }
+})
+
+app.get("/holiday/:id", async (req, res, next) => {
+  try {
+    const holi = await Holiday.findById(req.params.id)
+    return success(res, holi)
+  } catch (err) {
+    next({ status: 400, message: "failed to get list of holidays" })
+  }
+})
+
+app.get("/homeholiday", async (req, res, next) => {
+  try {
+    const holi = await Holiday.find({"date" : { $gte : new Date()}}).sort({"date":1}).limit(4)
+    return success(res, holi)
+  } catch (err) {
+    next({ status: 400, message: "failed to get list of holidays" })
+  }
+})
+
+app.get("/homebirthday", async (req, res, next) => {
+  try {
+    const holi = await Employee.find({"dob":{ $gte : new Date()}}).sort({"dob":1}).limit(4)
+    return success(res, holi)
+  } catch (err) {
+    next({ status: 400, message: "failed to get list of holidays" })
+  }
+})
+
+app.post("/holiday", async (req, res, next) => {
+  try {
+    const {
+      date,
+      event
+    }=req.body;
+    const holi=new Holiday({
+      date,
+      event
+    });
+    
+    await holi.save();
+    return success(res, holi)
+  } catch (err) {
+    next({ status: 400, message: "failed to create new holiday" })
+  }
+})
+
+app.put("/holiday/:id", async (req, res, next) => {
+  try {
+    const holi = await Holiday.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    })
+    return success(res, holi)
+  } catch (err) {
+    next({ status: 400, message: "failed to update" })
+  }
+})
+app.delete("/holiday/:id", async (req, res, next) => {
+  try {
+    await Holiday.findByIdAndRemove(req.params.id)
+    return success(res, "Holiday deleted!")
+  } catch (err) {
+    next({ status: 400, message: "failed to delete" })
+  }
+})
 
 app.use(handleError);

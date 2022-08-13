@@ -1,14 +1,15 @@
 .holimain{
     display:flex;
     flex-direction: column;
-    width:50vw;
+    /* width:50vw; */
     align-items: center;
-    margin: auto;
-    /* background-color: bisque; */
+    /* margin: auto; */
+    background-color: rgb(255, 249, 255);
     font-family: "lato";
-    margin-top: 7%;
-    height: 70vh;
-    overflow-y: scroll;
+    padding: 2%;
+    height: 90%;
+    width: 100%;
+    /* overflow-y: scroll; */
 }
 
 .holilistb tr td{
@@ -16,9 +17,13 @@
     border-top: 1px solid black;
 }
 
-.holilistb tr{
-    height: 25px;
-}
+/* .holilistb tr{
+    height: 10px;
+} */
+/* .holilisth tr{
+    height: 15px;
+    padding: 0%;
+} */
 .holilistb tr:hover{
     background: plum;
 }
@@ -28,16 +33,61 @@
 }
 
 .symbol{
-    height: 35px;
-    width:35px;
-    transition-duration: 1s;
-    cursor: pointer;
-}
-
-.small{
     height: 20px;
     width:20px;
     padding:10px;
+    transition-duration: 1s;
+    cursor: pointer;
+    color: black;
+}
+
+/* .small{
+    height: 20px;
+    width:20px;
+    padding:10px;
+} */
+
+.holisub{
+    width:100%;
+    height:100%;
+    overflow-y: scroll;
+    text-align: center;
+}
+.popup{
+    width:60%;
+    height:60%;
+    position: absolute;
+    background: rgba(139, 0, 139, 0.781);
+    top:25%;
+    left:30%;
+    margin-left:auto;
+}
+.c{
+    cursor: pointer;
+    color:purple;
+}
+.c:hover{
+    color:rgb(40, 1, 40);
+}
+.addbtn{
+    color:purple;
+    background: pink;
+    font-size: larger;
+    font-weight: bolder;
+    width: 15%;
+    height: 10%;
+    align-self: flex-end;
+    padding: 3px;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+}
+.p{
+    align-self: center;
+}
+.addbtn:hover{
+    background: purple;
+    color:pink;
 }
 
 .symbol:hover{
@@ -46,7 +96,7 @@
 
 .holilist{
 width:100%;
-border-bottom: 1px solid black;
+font-family: "lato";
 }
 
 .holilist caption{
@@ -56,7 +106,7 @@ border-bottom: 1px solid black;
 
 #dte,#evnt{
     height: 30px;
-    width:20%;
+    width:40%;
     font-size: large;
     font-weight: bold;
 }
@@ -71,10 +121,9 @@ border-bottom: 1px solid black;
 
 .holiadd{
     width: 100%;
+    height: 100%;
     display:flex;
-    flex-direction: row;
-    /* justify-content: space-around; */
-    justify-content: center;
-    gap:20%;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;  
 }

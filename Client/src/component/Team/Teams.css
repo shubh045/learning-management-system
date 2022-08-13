@@ -9,14 +9,14 @@
   width: 70vw;
   /* height:86.5vh; */
 }
-tr:hover {
+.table tr:hover {
   background-color: #d8a9ed;
 }
-tr:nth-child(even) {
+.table tr:nth-child(even) {
   background-color: #c286de;
 }
 
-th {
+.table tr th {
   padding-top: 50px;
   padding-bottom: 50px;
   text-align: center;
@@ -35,7 +35,7 @@ th {
 #id4 {
   border-radius: 0px 0px 20px 0px;
 }
-td {
+.table tr td {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;

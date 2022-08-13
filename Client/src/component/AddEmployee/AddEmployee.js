@@ -64,7 +64,7 @@ const Addemp = () => {
     // appi request and get value from modal
     setIsModalOpen(false)
   }
-
+  
   
   return (
     <>
