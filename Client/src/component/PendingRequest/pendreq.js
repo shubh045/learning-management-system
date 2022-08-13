@@ -1,17 +1,19 @@
 import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import "./pendreq.css";
-import axios from "axios";
 import DescButton from "./DescButton";
 import Description from "./Description";
 import Response from "./Response";
+import { useAuthContext } from "../../AuthContext";
+import axiosInstance from "../axios";
 
 const Pendreq = () => {
   const [leaveData, setLeaveData] = useState([]);
+  const {user} = useAuthContext()
 
   const getLeaveData = async () => {
     try {
-      const lData = await axios.get("http://localhost:3200/api/leaveApply");
+      const lData = await axiosInstance.get("/api/leaveApply");
       console.log(lData.data.leave);
       if (lData.data.leave) {
         setLeaveData(lData.data.leave);
@@ -36,40 +38,48 @@ const Pendreq = () => {
     }
   }
 
-  const [status, setStatus] = useState("");
-  const statusHandler = (val) => {
-    setStatus(val);
+  const statusHandler = (id,val) => {
+    const res = axiosInstance.put('api/leaveApply', {
+      status: val
+    });
+    console.log(leaveData,res);
   };
-  console.log(status);
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       {[...leaveData].map((emp, index) => {
         const {
+          _id,
+          userEmail,
+          userName,
+          status,
           dateApplied,
           leaveType,
           fromDate,
           toDate,
           subject,
           description,
+          managerEmail
         } = emp;
 
+        
+        for(const email of managerEmail){
+        if (email===user.email && status===""){
+          console.log(email)
         return (
           <div className="penwrap" key={index}>
             <div className="emname">
-              <label>Employee Name: {}</label>
+              <label>{userName}</label>
               <div className="button">
                 <Response
                   response="Accept"
                   className="b1"
-                  statusHandler={() => statusHandler("Accepted")}
-                  status={status}
+                  statusHandler={() => statusHandler(_id,"Accepted")}
                 />
                 <Response
                   response="Reject"
                   className="b2"
-                  statusHandler={() => statusHandler("Rejected")}
-                  status={status}
+                  statusHandler={() => statusHandler(_id,"Rejected")}
                 />
                 <DescButton
                   handleClick={handleClick}
@@ -91,6 +101,7 @@ const Pendreq = () => {
             </div>
           </div>
         );
+        }}
       })}
     </div>
   );
