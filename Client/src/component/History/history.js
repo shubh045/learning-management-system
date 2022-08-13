@@ -7,10 +7,11 @@ import {
 import { useEffect, useState } from "react";
 import "./history.css";
 import axiosInstance from "../axios";
+import { useAuthContext } from "../../AuthContext";
 
 const History = () => {
   
-  const {user} = useAuthContext
+  const {user} = useAuthContext();
 
   const [leaveData, setLeaveData] = useState([]);
 
@@ -44,7 +45,15 @@ const History = () => {
     }
   }
 
-  function extend() {
+  function extend(userEmail,
+    userName,
+    status,
+    dateApplied,
+    leaveType,
+    fromDate,
+    toDate,
+    subject,
+    description,) {
     if (state === 1) {
       return (
         <>
@@ -58,7 +67,15 @@ const History = () => {
     }
   }
 
-  function historyAll() {
+  function historyAll(userEmail,
+    userName,
+    status,
+    dateApplied,
+    leaveType,
+    fromDate,
+    toDate,
+    subject,
+    description,) {
     if (userEmail===user.email){
       if (status==="Accepted") {
         return(
@@ -74,7 +91,15 @@ const History = () => {
               <p style={{ padding: "7px" }}>Date of Leave applied: {dateApplied}</p>
               <p style={{ padding: "7px" }}>Type of Leave: {leaveType}</p>
               <p style={{ padding: "7px" }}>Subject: {subject}</p>
-              {extend()}
+              {extend(userEmail,
+          userName,
+          status,
+          dateApplied,
+          leaveType,
+          fromDate,
+          toDate,
+          subject,
+          description,)}
             </div>
           </>
         )
@@ -93,7 +118,15 @@ const History = () => {
               <p style={{ padding: "7px" }}>Date of Leave applied: {dateApplied}</p>
               <p style={{ padding: "7px" }}>Type of Leave: {leaveType}</p>
               <p style={{ padding: "7px" }}>Subject: {subject}</p>
-              {extend()}
+              {extend(userEmail,
+          userName,
+          status,
+          dateApplied,
+          leaveType,
+          fromDate,
+          toDate,
+          subject,
+          description,)}
             </div>
           </>
         )
@@ -101,7 +134,15 @@ const History = () => {
     }
   }
 
-  function historyAccepted() {
+  function historyAccepted(userEmail,
+    userName,
+    status,
+    dateApplied,
+    leaveType,
+    fromDate,
+    toDate,
+    subject,
+    description,) {
     if (userEmail===user.email && status==="Accepted") {
       return(
         <>
@@ -123,7 +164,15 @@ const History = () => {
     }
   }
 
-  function historyAccepted() {
+  function historyRejected(userEmail,
+    userName,
+    status,
+    dateApplied,
+    leaveType,
+    fromDate,
+    toDate,
+    subject,
+    description,) {
     if (userEmail===user.email && status==="Rejected") {
       return(
         <>
@@ -145,34 +194,66 @@ const History = () => {
     }
   }
 
-  const changeHandler = (event) => {
-    const {value} = event.target;
-    if(event.target.value==="all") 
+  const changeHandler = (event,userEmail,
+    userName,
+    status,
+    dateApplied,
+    leaveType,
+    fromDate,
+    toDate,
+    subject,
+    description,) => {
+    const value = event.target.value;
+    if(value==="all") 
     {
       return(
         <>
         {
-          historyAll()
+          historyAll(userEmail,
+            userName,
+            status,
+            dateApplied,
+            leaveType,
+            fromDate,
+            toDate,
+            subject,
+            description,)
         }
         </>
       )
     }
-    else if(event.target.value==="accepted")
+    else if(value==="accepted")
     {
       return(
         <>
         {
-          historyAccepted()
+          historyAccepted(userEmail,
+            userName,
+            status,
+            dateApplied,
+            leaveType,
+            fromDate,
+            toDate,
+            subject,
+            description,)
         }
         </>
       )
     }
-    else if(event.target.value==="rejected")
+    else if(value==="rejected")
     {
       return(
         <>
         {
-          historyRejected()
+          historyRejected(userEmail,
+            userName,
+            status,
+            dateApplied,
+            leaveType,
+            fromDate,
+            toDate,
+            subject,
+            description,)
         }
         </>
       )
@@ -205,7 +286,15 @@ const History = () => {
           <div>
             <br />
             <label htmlFor="filter">FILTER:</label>
-            <select onChange={changeHandler} name="filter" id="filter">
+            <select onChange={() => changeHandler(userEmail,
+          userName,
+          status,
+          dateApplied,
+          leaveType,
+          fromDate,
+          toDate,
+          subject,
+          description,)} name="filter" id="filter">
               <option value="all">All</option>
               <option value="accepted">Accepted</option>
               <option value="rejected">Rejected</option>
