@@ -6,9 +6,13 @@ const { sendEmail } = require("../emailService");
 
 const Router = express.Router();
 
+
 Router.post("/api/leaveApply", async (req, res) => {
   try {
     const {
+        userEmail,
+        userName,
+        status,
         dateApplied,
         leaveType,
         fromDate,
@@ -20,12 +24,16 @@ Router.post("/api/leaveApply", async (req, res) => {
 
     console.log("leave", req.body)
     const leave = new leaveApply({
+        userEmail,
+        userName,
+        status,
         dateApplied,
         leaveType,
         fromDate,
         toDate,
         subject,
         description,
+        managerEmail
     });
 
     await leave.save();
@@ -33,7 +41,7 @@ Router.post("/api/leaveApply", async (req, res) => {
     const mailOptions = {
       to: managerEmail,
       subject: "LEAVE APPLICATION",
-      html: appLeav(leaveType, fromDate, toDate, subject, description),
+      html: appLeav(userEmail, userName, leaveType, fromDate, toDate, subject, description),
     };
 
     await sendEmail(mailOptions);
@@ -56,6 +64,19 @@ Router.get("/api/leaveApply",async (req, res) =>{
        error:err
      })
    })
+  })
+
+  Router.put("/api/leaveApply",async (req, res) =>{
+    const {id, status} = req.body;
+    console.log(req.body)
+    try{
+    console.log(id,status);
+    const leaveData = await leaveApply.findOne({id});
+    leaveData.status=status;
+    await leaveData.save();
+    }catch(err){
+      console.log(err);
+    }
   })
 
 module.exports = Router;
