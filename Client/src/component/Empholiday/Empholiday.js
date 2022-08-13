@@ -73,9 +73,9 @@ const Empholiday = () => {
               </tr>
 
               <tr>
-                <td>Shubham</td>
-                <td>HR</td>
-                <td>Admin</td>
+                <td>Suman</td>
+                <td>Engineering Intern</td> 
+                <td>Anuj</td> 
               </tr>
               
               </tbody>
