@@ -26,7 +26,7 @@ const DispHolidays = () => {
             const {_id,date,event}=c;
             return(
               <>
-         <li key={_id}>{date.substring(8) + "-" + date.substring(5,7) + "-" + date.substring(0,4)} - {event}</li>
+         <li key={_id}>{date.substring(8,10) + "-" + date.substring(5,7) + "-" + date.substring(0,4)} - {event}</li>
               </>
             )
           })}

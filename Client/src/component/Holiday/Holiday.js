@@ -141,7 +141,7 @@ const Holiday = () => {
               <div className='popup'>
                   <div className='holiadd'>
           
-                  <input type="date" id="dte" placeholder='date' onChange={changeHandler} name="date" min="2022-08-10" max="2022-12-31"/>
+                  <input type="date" id="dte" placeholder='date' onChange={changeHandler} name="date" min="2022-08-12" max="2022-12-31"/>
                     
                   <input type="text" id="evnt" placeholder='Event' onChange={changeHandler} name="event" maxLength="30"></input>
                     
@@ -158,7 +158,7 @@ const Holiday = () => {
                   <div className='popup'>
                   <div className='holiadd'>
           
-                  <input type="date" id="dte" placeholder='date' onChange={changeHandler} name="date" min="2022-08-10" />
+                  <input type="date" id="dte" placeholder='date' onChange={changeHandler} name="date" min="2022-08-12" max="2022-12-31" />
                     
                   <input type="text" id="evnt" placeholder='Event' onChange={changeHandler} name="event" maxLength="30"></input>
                     
@@ -178,6 +178,7 @@ const Holiday = () => {
           <thead className='holilisth'>
             <tr>
               <th>Date</th>
+              <th>Day</th>
               <th>Holiday Name</th>
               <th>Action</th>
             </tr>
@@ -186,10 +187,12 @@ const Holiday = () => {
           <tbody className='holilistb'>
           {list.map(c=>{
             const {_id,date,event}=c;
+            const days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
             return(
               <>
          <tr key={_id}>
-           <td>{date.substring(8) + "-" + date.substring(5,7) + "-" + date.substring(0,4)}</td>
+           <td>{date.substring(8,10) + "-" + date.substring(5,7) + "-" + date.substring(0,4)}</td>
+           <td>{days[new Date(date).getDay()]}</td>
            <td>{event}</td>
            <td>
              <a onClick={()=> { HandlePopu(); edit(_id)}} className="c">Edit</a>
