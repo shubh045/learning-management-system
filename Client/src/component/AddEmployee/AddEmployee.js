@@ -111,8 +111,10 @@ const Addemp = () => {
                   <div className="role disp label-i">
                     <label htmlFor="role">Role</label>
                     <select onChange={changeHandler} name="role" id="role">
-                      <option value="hr">HR</option>
-                      <option value="add-new-role">Add New Role</option>
+                      <option value="select-role">Select Role</option>
+                      <option value="HR" >HR</option>
+                      <option value="Intern">Intern</option>
+                      <option value="add-new-role">Add New Role</option> selected
                     </select>
                   </div>
                   <div className="doj disp label-i">
@@ -136,7 +138,7 @@ const Addemp = () => {
                         <input onChange={changeHandler} 
                           type="radio"
                           name="gender"
-                          value="male"
+                          value="Male"
                           id="male"
                         />
                         <label htmlFor="male">Male</label>
@@ -145,7 +147,7 @@ const Addemp = () => {
                         <input onChange={changeHandler} 
                           type="radio"
                           name="gender"
-                          value="female"
+                          value="Female"
                           id="female"
                         />
                         <label htmlFor="female">Female</label>
@@ -189,6 +191,7 @@ const Addemp = () => {
                   <div className="disp name">
                     <div className="disp f-name label-i">
                       <select id="drop-down" name="managerName" value={state.managerName} onChange={changeHandler}>
+                        <option value="Select-Manager">Select Manager</option>
                         <option value="Anuj Thakur">Anuj Thakur</option>
                         <option value="Deepak Verna">Deepak Verna</option>
                         <option value="Gurinder Singh">Gurinder Singh</option>
