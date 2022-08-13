@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const DescButton = (props) => {
   return (
     <button
-      onClick={(e) => props.handleClick(e, props.index)}
+      onClick={props.handleClick}
       key={props.key}
       id={props.id}
       className="b3"

@@ -25,6 +25,11 @@ const events = [
       start: getDate("YEAR-MONTH-18T10:30:00+00:00"),
       end: getDate("YEAR-MONTH-18T12:30:00+00:00")
     },
+    {
+      title: "Independence Day", 
+      start: getDate("YEAR-MONTH-15T10:30:00+00:00"), 
+      end: getDate("YEAR-MONTH-15T12:30:00+00:00")
+    }, 
     { title: "Lunch", start: getDate("YEAR-MONTH-18T12:00:00+00:00") },
     { title: "Birthday Party", start: getDate("YEAR-MONTH-19T07:00:00+00:00") },
     { title: "Meeting", start: getDate("YEAR-MONTH-18T14:30:00+00:00") },

@@ -1,19 +1,28 @@
 import React from "react";
 import "./Apply.css";
 import { useState } from "react";
-import axios from "axios";
+import { useAuthContext } from "../../AuthContext";
+import axiosInstance from "../axios";
+
+const hrEmail = "shivansh.singh@block8.com";
+
 
 function Apply() {
 
   const today = new Date().toISOString().split('T')[0];
+  const {user} = useAuthContext()
 
   const [leave, setLeave] = useState({
+    userEmail: user.email,
+    userName: user.firstName+" "+user.lastName,
+    status: "",
     dateApplied: today,
     leaveType: "",
     fromDate: "",
     toDate: "",
     subject: "",
     description: "",
+    managerEmail: [hrEmail,user.managerEmail]
   });
 
   const [errMessage, setErrMessage] = useState("");
@@ -32,7 +41,7 @@ function Apply() {
     try {
       setLresult("");
       setErrMessage("");
-      const data = await axios.post("http://localhost:3200/api/leaveApply", {
+      const data = await axiosInstance.post("api/leaveApply", {
         ...leave,
       })
       console.log(data);
@@ -46,6 +55,8 @@ function Apply() {
       setErrMessage(error.error);
     }
   };
+
+  console.log(leave);
 
   return (
     <>
@@ -91,7 +102,7 @@ function Apply() {
           <button type="submit">Apply Now</button>
         </div>
         {errMessage && <p style={{background: "red", padding: "10px", color: "#fff", maxWidth:"500px"}}>Fill all required data</p>}
-    {lresult && <p style={{background: "green", padding: "10px", color: "#fff"}}>{lresult}</p>}
+    {lresult && <p style={{background: "green", padding: "10px", color: "#fff"}}>Leave Sent Successfully</p>}
       </form>
     </>
   );

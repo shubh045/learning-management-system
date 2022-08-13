@@ -125,7 +125,7 @@ function success(res, payload) {
 
 app.get("/holiday", async (req, res, next) => {
   try {
-    const holi = await Holiday.find().sort("date")
+    const holi = await Holiday.find().sort({"date":1})
     return success(res, holi)
   } catch (err) {
     next({ status: 400, message: "failed to get list of holidays" })
@@ -143,7 +143,7 @@ app.get("/holiday/:id", async (req, res, next) => {
 
 app.get("/homeholiday", async (req, res, next) => {
   try {
-    const holi = await Holiday.find().sort("date").limit(4)
+    const holi = await Holiday.find({"date" : { $gte : new Date()}}).sort({"date":1}).limit(4)
     return success(res, holi)
   } catch (err) {
     next({ status: 400, message: "failed to get list of holidays" })
@@ -152,7 +152,7 @@ app.get("/homeholiday", async (req, res, next) => {
 
 app.get("/homebirthday", async (req, res, next) => {
   try {
-    const holi = await Employee.find({}).limit(4)
+    const holi = await Employee.find({"dob":{ $gte : new Date()}}).sort({"dob":1}).limit(4)
     return success(res, holi)
   } catch (err) {
     next({ status: 400, message: "failed to get list of holidays" })
