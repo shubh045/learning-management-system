@@ -98,10 +98,10 @@ const Empholiday = () => {
             <ul className="card-list">
               <h3 className="head">Upcoming Birthdays</h3>
               {bday.map(c=>{
-            const {_id,fn,ln,email,pass,contact,role,doj,dob,gender,address,city,state,postal,mname,memail,rt}=c;
+            const {_id,firstName,lastName,email,pass,contact,role,doj,dob,gender,address,city,state,postal,mname,memail,rt}=c;
             return(
               <>
-         <li key={_id}>{dob.substring(8,10) + "-" + dob.substring(5,7) + "-" + dob.substring(0,4)} - {fn +" "+ ln}</li>
+         <li key={_id}>{dob.substring(8,10) + "-" + dob.substring(5,7) + "-" + dob.substring(0,4)} - {firstName +" "+ lastName}</li>
               </>
             )
           })}

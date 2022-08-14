@@ -5,8 +5,6 @@
 }
 
 .empnam{
-    background-color: green;
-    border-color: green;
     display: flex;
     border-style: solid;
     justify-content: space-between;
