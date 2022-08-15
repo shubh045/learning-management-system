@@ -10,7 +10,7 @@ const addEmployeRoute = require("./routes/addEmploye");
 const sendLeave = require("./routes/sendLeave");
 const Role = require("./models/role");
 const cookieParser = require("cookie-parser");
-
+const leaveApply = require("./models/leaveapply");
 const Employee = require("./models/employee");
 const Holiday = require("./models/holiday");
 
@@ -121,6 +121,22 @@ app.get("/api/roleList", async (req, res) => {
       console.log(err);
       res.status(500).json({
         error: err,
+      });
+    });
+});
+
+app.get("/api/empLeave", async (req, res, next) => {
+  leaveApply
+    .find({ status: "Accepted", date: { $lte: new Date() } })
+    .then((result) => {
+      res.status(200).json({
+        onLeave: result,
+      });
+    })
+
+    .catch((error) => {
+      res.status(500).json({
+        error: error,
       });
     });
 });
