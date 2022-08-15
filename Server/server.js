@@ -11,33 +11,35 @@ const sendLeave = require("./routes/sendLeave");
 const Role = require("./models/role");
 const cookieParser = require("cookie-parser");
 
-const Employee = require("./models/employee")
-const Holiday= require("./models/holiday") 
-
+const Employee = require("./models/employee");
+const Holiday = require("./models/holiday");
 
 const app = express();
 
 const whitelist = process.env.WHITELISTED_DOMAINS
   ? process.env.WHITELISTED_DOMAINS.split(",")
-  : []
+  : [];
 
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
+      callback(null, true);
     } else {
-      callback(new Error("Not allowed by CORS"))
+      callback(new Error("Not allowed by CORS"));
     }
   },
 
   credentials: true,
   exposedHeaders: ["set-cookie"],
-}
-app.use(cors(corsOptions))
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.header('Access-Control-Allow-Credentials', true);
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+};
+app.use(cors(corsOptions));
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   next();
 });
 
@@ -49,13 +51,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(cookieParser());
 // app.use(session({keys: ['secretkey1', 'secretkey2']}));
 
-
-
-
-
-
-const dbUrl =
-  process.env.MONGO_DB_CONNECTION_STRING;
+const dbUrl = process.env.MONGO_DB_CONNECTION_STRING;
 const connectionParams = {
   useNewUrlParser: true,
 };
@@ -73,9 +69,6 @@ mongoose
 // app.use(login)
 // app.midelerware
 
-
-
-
 app.use(Login);
 app.use(addEmployeRoute);
 app.use(sendLeave);
@@ -83,8 +76,21 @@ app.use(sendLeave);
 app.listen(3100, "127.0.0.1");
 console.log("Node server running on port 3100");
 
+app.get("/api/managerlist", async (req, res) => {
+  Employee.find({ role: "manager" })
+    .then((result) => {
+      res.status(200).json({
+        manager: result,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        error: err,
+      });
+    });
+});
 
-app.get("/api/managerlist");
 app.post("/api/addRole", async (req, res) => {
   console.log(req.body);
   try {
@@ -120,80 +126,81 @@ app.get("/api/roleList", async (req, res) => {
 });
 
 function success(res, payload) {
-  return res.status(200).json(payload)
+  return res.status(200).json(payload);
 }
 
 app.get("/holiday", async (req, res, next) => {
   try {
-    const holi = await Holiday.find().sort({"date":1})
-    return success(res, holi)
+    const holi = await Holiday.find().sort({ date: 1 });
+    return success(res, holi);
   } catch (err) {
-    next({ status: 400, message: "failed to get list of holidays" })
+    next({ status: 400, message: "failed to get list of holidays" });
   }
-})
+});
 
 app.get("/holiday/:id", async (req, res, next) => {
   try {
-    const holi = await Holiday.findById(req.params.id)
-    return success(res, holi)
+    const holi = await Holiday.findById(req.params.id);
+    return success(res, holi);
   } catch (err) {
-    next({ status: 400, message: "failed to get list of holidays" })
+    next({ status: 400, message: "failed to get list of holidays" });
   }
-})
+});
 
 app.get("/homeholiday", async (req, res, next) => {
   try {
-    const holi = await Holiday.find({"date" : { $gte : new Date()}}).sort({"date":1}).limit(4)
-    return success(res, holi)
+    const holi = await Holiday.find({ date: { $gte: new Date() } })
+      .sort({ date: 1 })
+      .limit(4);
+    return success(res, holi);
   } catch (err) {
-    next({ status: 400, message: "failed to get list of holidays" })
+    next({ status: 400, message: "failed to get list of holidays" });
   }
-})
+});
 
 app.get("/homebirthday", async (req, res, next) => {
   try {
-    const holi = await Employee.find({"dob":{ $gte : new Date()}}).sort({"dob":1}).limit(4)
-    return success(res, holi)
+    const holi = await Employee.find({ dob: { $gte: new Date() } })
+      .sort({ dob: 1 })
+      .limit(4);
+    return success(res, holi);
   } catch (err) {
-    next({ status: 400, message: "failed to get list of holidays" })
+    next({ status: 400, message: "failed to get list of holidays" });
   }
-})
+});
 
 app.post("/holiday", async (req, res, next) => {
   try {
-    const {
+    const { date, event } = req.body;
+    const holi = new Holiday({
       date,
-      event
-    }=req.body;
-    const holi=new Holiday({
-      date,
-      event
+      event,
     });
-    
+
     await holi.save();
-    return success(res, holi)
+    return success(res, holi);
   } catch (err) {
-    next({ status: 400, message: "failed to create new holiday" })
+    next({ status: 400, message: "failed to create new holiday" });
   }
-})
+});
 
 app.put("/holiday/:id", async (req, res, next) => {
   try {
     const holi = await Holiday.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
-    })
-    return success(res, holi)
+    });
+    return success(res, holi);
   } catch (err) {
-    next({ status: 400, message: "failed to update" })
+    next({ status: 400, message: "failed to update" });
   }
-})
+});
 app.delete("/holiday/:id", async (req, res, next) => {
   try {
-    await Holiday.findByIdAndRemove(req.params.id)
-    return success(res, "Holiday deleted!")
+    await Holiday.findByIdAndRemove(req.params.id);
+    return success(res, "Holiday deleted!");
   } catch (err) {
-    next({ status: 400, message: "failed to delete" })
+    next({ status: 400, message: "failed to delete" });
   }
-})
+});
 
 app.use(handleError);
