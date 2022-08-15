@@ -28,6 +28,8 @@ const Addemp = () => {
   const [result, setResult] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [managerList, setManagerList] = useState([]);
+  const [newRole, setNewRole] = useState({});
+  const [addRole, setAddRole] = useState([]);
 
   const changeHandler = (event) => {
     const { name, value } = event.target;
@@ -75,7 +77,28 @@ const Addemp = () => {
     }
   };
 
-  const saveModalHandler = () => {
+  const newRoleHandler = (e) => {
+    setNewRole((prev) => ({ ...prev, designation: e.target.value }));
+  };
+
+  const getRoleHandler = async () => {
+    try {
+      const curRole = await axiosInstance.get("/api/roleList");
+      console.log(curRole.data);
+      if (curRole.data.roleData) {
+        setAddRole(curRole.data.roleData);
+      }
+    } catch (error) {
+      console.log(error.error);
+    }
+  };
+  useEffect(() => {
+    getRoleHandler();
+  }, []);
+
+  const saveModalHandler = async (e) => {
+    e.preventDefault();
+    await axiosInstance.post("/api/addrole", { ...newRole });
     // appi request and get value from modal
     setIsModalOpen(false);
   };
@@ -136,12 +159,21 @@ const Addemp = () => {
                 <div className="disp p-info">
                   <div className="role disp label-i">
                     <label htmlFor="role">Role</label>
-                    <select onChange={changeHandler} name="role" id="role">
+                    <select
+                      onChange={changeHandler}
+                      name="role"
+                      id="role"
+                      value={state.role}
+                    >
                       <option value="select-role">Select Role</option>
-                      <option value="HR">HR</option>
-                      <option value="Intern">Intern</option>
-                      <option value="add-new-role">Add New Role</option>{" "}
-                      selected
+                      {/* <option value="HR">HR</option>
+                      <option value="Intern">Intern</option> */}
+                      {[...addRole].map((nRole) => (
+                        <option value={nRole.designation}>
+                          {nRole.designation}
+                        </option>
+                      ))}
+                      <option value="add-new-role">Add New Role</option>
                     </select>
                   </div>
                   <div className="doj disp label-i">
@@ -328,7 +360,11 @@ const Addemp = () => {
               <form onSubmit={saveModalHandler}>
                 <h3 style={{ color: "black" }}>Add New Role</h3>
                 <br />
-                <input type="text" placeholder="Type Here" />
+                <input
+                  type="text"
+                  placeholder="Type Here"
+                  onChange={newRoleHandler}
+                />
                 <div className="btns-role">
                   <button type="submit">Save</button>
                   <button onClick={() => setIsModalOpen(false)}>Cancel</button>

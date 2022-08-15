@@ -16,7 +16,7 @@ Router.post("/api/addRole", async (req, res) => {
 
     res.status(200).json({
       status: "200",
-      message: "Employee register successfully",
+      message: "Role added successfully",
     });
   } catch (err) {
     console.log(err);
