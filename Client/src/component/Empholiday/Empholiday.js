@@ -111,28 +111,6 @@ const Empholiday = () => {
                 }
               })
             )}
-
-            {/* <tr>
-                <td>Shubham</td>
-                <td>HR</td>
-                <td>Admin</td>
-              </tr>
-              <tr>
-                <td>Shivansh</td>
-                <td>Engineering Intern</td>
-                <td>Anuj</td>
-              </tr>
-              <tr>
-                <td>Sunny</td>
-                <td>Engineering Intern</td>
-                <td>Anuj</td>
-              </tr>
-
-              <tr>
-                <td>Shubham</td>
-                <td>HR</td>
-                <td>Admin</td>
-              </tr> */}
           </tbody>
         </table>
 

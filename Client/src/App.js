@@ -7,7 +7,7 @@ import { AuthProvider } from "./AuthContext";
 function App() {
   return (
     <AuthProvider>
-     <Routes/>
+     <Routes/> 
     </AuthProvider>
   );
 }
