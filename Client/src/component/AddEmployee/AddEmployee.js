@@ -1,71 +1,108 @@
 import "./AddEmployee.css";
-import React from 'react'
+import React, { useEffect } from "react";
 import { useState } from "react";
-import axios from "axios"
+import axios from "axios";
+import axiosInstance from "../axios";
 
 const Addemp = () => {
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toISOString().split("T")[0];
 
   const [state, setState] = useState({
-    firstName:"",
+    firstName: "",
     lastName: "",
-    email:" ",
-    contactNumber:" ",
-    role:"",
-    joining:"",
+    email: " ",
+    contactNumber: " ",
+    role: "",
+    joining: "",
     dob: " ",
     gender: "",
     address: "",
-    city:"",
-    state:"",
+    city: "",
+    state: "",
     postalCode: "",
-    managerName:"",
-    managerEmail:""
-  })
+    managerName: "",
+    managerEmail: "",
+  });
 
-  const [errorMessage, setErrorMessage] = useState("")
+  const [errorMessage, setErrorMessage] = useState("");
   const [result, setResult] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [managerList, setManagerList] = useState([]);
+  const [newRole, setNewRole] = useState({});
+  const [addRole, setAddRole] = useState([]);
 
   const changeHandler = (event) => {
-    const {name, value} = event.target;
-    if(event.target.name==="role"&&event.target.value==="add-new-role") 
-    {
-      setIsModalOpen(true)
+    const { name, value } = event.target;
+    if (event.target.name === "role" && event.target.value === "add-new-role") {
+      setIsModalOpen(true);
       return;
     }
     setState({
       ...state,
-      [name]: value
-    })
-  } 
+      [name]: value,
+    });
+  };
+
+  const getManagerList = async () => {
+    try {
+      const curManager = await axiosInstance.get("/api/managerlist");
+      if (curManager.data.manager) {
+        setManagerList(curManager.data.manager);
+      }
+    } catch (error) {
+      console.log(error.error);
+    }
+  };
+  useEffect(() => {
+    getManagerList();
+  }, []);
 
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      setResult("")
-      setErrorMessage("")
-      const data = await axios.post("http://localhost:3100/api/addEmployee", {...state})
-      console.log(data)
-      if(!data.data.error) {
-        setResult(data.data.message)
+      setResult("");
+      setErrorMessage("");
+      const data = await axios.post("http://localhost:3100/api/addEmployee", {
+        ...state,
+      });
+      console.log(data);
+      if (!data.data.error) {
+        setResult(data.data.message);
       } else {
-        setErrorMessage(data.data.error)
+        setErrorMessage(data.data.error);
       }
-    } catch(error){
-      console.log(error)
-      setErrorMessage(error.error)
+    } catch (error) {
+      console.log(error);
+      setErrorMessage(error.error);
     }
-    
-  }
+  };
 
+  const newRoleHandler = (e) => {
+    setNewRole((prev) => ({ ...prev, designation: e.target.value }));
+  };
 
-  const saveModalHandler = () => {
+  const getRoleHandler = async () => {
+    try {
+      const curRole = await axiosInstance.get("/api/roleList");
+      console.log(curRole.data);
+      if (curRole.data.roleData) {
+        setAddRole(curRole.data.roleData);
+      }
+    } catch (error) {
+      console.log(error.error);
+    }
+  };
+  useEffect(() => {
+    getRoleHandler();
+  }, []);
+
+  const saveModalHandler = async (e) => {
+    e.preventDefault();
+    await axiosInstance.post("/api/addrole", { ...newRole });
     // appi request and get value from modal
-    setIsModalOpen(false)
-  }
-  
-  
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <section className="disp add-emp">
@@ -77,7 +114,9 @@ const Addemp = () => {
                 <div className="disp name">
                   <div className="disp f-name label-i">
                     <label htmlFor="fname">First Name</label>
-                    <input onChange={changeHandler} name="firstName"
+                    <input
+                      onChange={changeHandler}
+                      name="firstName"
                       type="text"
                       placeholder="Enter first name"
                       id="fname"
@@ -85,7 +124,9 @@ const Addemp = () => {
                   </div>
                   <div className="disp l-name label-i">
                     <label htmlFor="lname">Last Name</label>
-                    <input onChange={changeHandler} name="lastName"
+                    <input
+                      onChange={changeHandler}
+                      name="lastName"
                       type="text"
                       placeholder="Enter Last name"
                       id="lname"
@@ -95,11 +136,19 @@ const Addemp = () => {
                 <div className="disp contact">
                   <div className="e-mail disp label-i">
                     <label htmlFor="e-mail">Email</label>
-                    <input onChange={changeHandler} name="email" type="text" placeholder="Enter email" id="e-mail" />
+                    <input
+                      onChange={changeHandler}
+                      name="email"
+                      type="text"
+                      placeholder="Enter email"
+                      id="e-mail"
+                    />
                   </div>
                   <div className="phone disp label-i">
                     <label htmlFor="phone">Contact Number</label>
-                    <input onChange={changeHandler} name="contactNumber"
+                    <input
+                      onChange={changeHandler}
+                      name="contactNumber"
                       type="tel"
                       pattern="[0-9]{10}"
                       placeholder="Enter Contact no."
@@ -110,48 +159,72 @@ const Addemp = () => {
                 <div className="disp p-info">
                   <div className="role disp label-i">
                     <label htmlFor="role">Role</label>
-                    <select onChange={changeHandler} name="role" id="role">
-                      <option value="hr">HR</option>
+                    <select
+                      onChange={changeHandler}
+                      name="role"
+                      id="role"
+                      value={state.role}
+                    >
+                      <option value="select-role">Select Role</option>
+                      {/* <option value="HR">HR</option>
+                      <option value="Intern">Intern</option> */}
+                      {[...addRole].map((nRole) => (
+                        <option value={nRole.designation}>
+                          {nRole.designation}
+                        </option>
+                      ))}
                       <option value="add-new-role">Add New Role</option>
                     </select>
                   </div>
                   <div className="doj disp label-i">
                     <label htmlFor="doj">Joining Date</label>
-                    <input onChange={changeHandler} name="joining"
+                    <input
+                      onChange={changeHandler}
+                      name="joining"
                       type="date"
                       placeholder="Enter Joining date"
-                      id="doj" max={today}
+                      id="doj"
+                      max={today}
                     />
                   </div>
                 </div>
                 <div className="disp gender">
                   <div className="dob disp label-i">
                     <label htmlFor="dob">Date of birth</label>
-                    <input onChange={changeHandler} name="dob" type="date" placeholder="Enter DOB" id="dob" />
+                    <input
+                      onChange={changeHandler}
+                      name="dob"
+                      type="date"
+                      placeholder="Enter DOB"
+                      id="dob"
+                    />
                   </div>
                   <div className="gend disp label-i">
                     <h4>Gender</h4>
                     <div className="disp gen">
                       <div className="disp male">
-                        <input onChange={changeHandler} 
+                        <input
+                          onChange={changeHandler}
                           type="radio"
                           name="gender"
-                          value="male"
+                          value="Male"
                           id="male"
                         />
                         <label htmlFor="male">Male</label>
                       </div>
                       <div className="disp female">
-                        <input onChange={changeHandler} 
+                        <input
+                          onChange={changeHandler}
                           type="radio"
                           name="gender"
-                          value="female"
+                          value="Female"
                           id="female"
                         />
                         <label htmlFor="female">Female</label>
                       </div>
                       <div className="disp others">
-                        <input onChange={changeHandler}
+                        <input
+                          onChange={changeHandler}
                           type="radio"
                           name="gender"
                           value="others"
@@ -166,76 +239,141 @@ const Addemp = () => {
                   <h4>Address</h4>
                   <div className="addrs1 disp label-i">
                     <label htmlFor="addrs1">Address Line 1</label>
-                    <input onChange={changeHandler} name="address" type="text" />
+                    <input
+                      onChange={changeHandler}
+                      name="address"
+                      type="text"
+                    />
                   </div>
                   <div className="addrs2 disp">
                     <div className="city disp label-i">
                       <label htmlFor="city">City</label>
-                      <input onChange={changeHandler} name="city" type="text" id="city" />
+                      <input
+                        onChange={changeHandler}
+                        name="city"
+                        type="text"
+                        id="city"
+                      />
                     </div>
                     <div className="state disp label-i">
                       <label htmlFor="state">State</label>
-                      <input onChange={changeHandler} name="state" type="text" id="state" />
+                      <input
+                        onChange={changeHandler}
+                        name="state"
+                        type="text"
+                        id="state"
+                      />
                     </div>
                   </div>
 
                   <div className="pinc disp label-i">
                     <label htmlFor="pinc">Postal code</label>
-                    <input onChange={changeHandler} name="postalCode" type="number" id="pinc" />
+                    <input
+                      onChange={changeHandler}
+                      name="postalCode"
+                      type="number"
+                      id="pinc"
+                    />
                   </div>
                 </div>
                 <div className="r-manager">
                   <h2>Reporting Manager</h2>
                   <div className="disp name">
                     <div className="disp f-name label-i">
-                      <select id="drop-down" name="managerName" value={state.managerName} onChange={changeHandler}>
-                        <option value="Anuj Thakur">Anuj Thakur</option>
-                        <option value="Deepak Verna">Deepak Verna</option>
-                        <option value="Gurinder Singh">Gurinder Singh</option>
-                        <option value="Akash Sharma">Akash Sharma</option>
+                      <select
+                        id="drop-down"
+                        name="managerName"
+                        value={state.managerName}
+                        onChange={changeHandler}
+                      >
+                        <option value="Select-Manager">Select Manager</option>
+                        {[...managerList].map((manager, index) => (
+                          <option
+                            value={`${manager.firstName} ${manager.lastName}`}
+                          >{`${manager.firstName} ${manager.lastName}`}</option>
+                        ))}
                       </select>
                     </div>
                     <div className="e-mail disp label-i">
-                      <label htmlFor="me-mail">Email</label>
-                      <input onChange={changeHandler} name="managerEmail"
-                        type="text"
-                        placeholder="Enter email"
-                        id="me-mail"
-                      />
+                      <select
+                        id="drop-down"
+                        name="managerEmail"
+                        value={state.managerEmail}
+                        onChange={changeHandler}
+                      >
+                        <option value="Select Manager Email">
+                          Select Manager Email
+                        </option>
+                        {[...managerList].map(
+                          (manager, index) =>
+                            `${manager.firstName} ${manager.lastName}` ===
+                              state.managerName && (
+                              <option value={manager.email}>
+                                {manager.email}
+                              </option>
+                            )
+                        )}
+                      </select>
                     </div>
                   </div>
                 </div>
                 <div className="btns">
-                  <button  onClick={submitHandler} className="btn-add">
+                  <button onClick={submitHandler} className="btn-add">
                     Add
                   </button>
                   <button type="reset" className="btn-res">
                     Cancel
                   </button>
-                  {errorMessage && <p style={{background: "red", padding: "10px", color: "#fff", maxWidth:"500px"}}>{errorMessage}</p>}
-    {result && <p style={{background: "green", padding: "10px", color: "#fff"}}>{result}</p>}
+                  {errorMessage && (
+                    <p
+                      style={{
+                        background: "red",
+                        padding: "10px",
+                        color: "#fff",
+                        maxWidth: "500px",
+                      }}
+                    >
+                      {errorMessage}
+                    </p>
+                  )}
+                  {result && (
+                    <p
+                      style={{
+                        background: "green",
+                        padding: "10px",
+                        color: "#fff",
+                      }}
+                    >
+                      {result}
+                    </p>
+                  )}
                 </div>
               </form>
             </div>
           </div>
         </div>
       </section>
-      {
-        isModalOpen && <>
-        <div className="role-modal">
-          <div className="role-border">
-          <form onSubmit={saveModalHandler}>
-            <h3 style={{color:"black"}}>Add New Role</h3><br/>
-            <input type="text" placeholder="Type Here" />
-            <div  className="btns-role">
-            <button type="submit">Save</button>
-            <button onClick={() => setIsModalOpen(false)}>Cancel</button>
+      {isModalOpen && (
+        <>
+          <div className="role-modal">
+            <div className="role-border">
+              <form onSubmit={saveModalHandler}>
+                <h3 style={{ color: "black" }}>Add New Role</h3>
+                <br />
+                <input
+                  type="text"
+                  placeholder="Type Here"
+                  onChange={newRoleHandler}
+                />
+                <div className="btns-role">
+                  <button type="submit">Save</button>
+                  <button onClick={() => setIsModalOpen(false)}>Cancel</button>
+                </div>
+              </form>
             </div>
-          </form>
           </div>
-        </div>
         </>
-      }
+      )}
     </>
   );
 };

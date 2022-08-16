@@ -3,9 +3,37 @@ import './navbar.css'
 // import Logo from "./component/logo/Logo";
 import Logo from '../logo/Logo'
 import { useNavigate } from 'react-router-dom'
+import { useAuthContext } from "../../AuthContext";
+//
+
+// import { useAuthContext } from '../../AuthContext'
+// import axios from '../axios'
+
 
 export const Navbar = () => {
+
     const navigate = useNavigate()
+    const { user } = useAuthContext();
+
+//     const {user, updateUser, fetchUser} = useAuthContext();
+//   
+//   const logout = () => {
+//     axios
+//     .post('logout')
+//     .then((response) => {
+//       updateUser({})
+//       navigate('/login');
+//     })
+//     .catch((error) => {
+//       console.log(error)
+//     });
+//   };
+
+//     if (user.role === 'hr'||user.role ==='HR')
+//     document.getElementById("qwerty").disabled = false;
+//     else
+//     document.getElementById("qwerty").disabled = true;
+
   return (
     <div>
         <nav className='main-nav'>

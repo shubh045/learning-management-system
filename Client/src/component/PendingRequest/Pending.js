@@ -7,7 +7,7 @@ import axiosInstance from "../axios";
 
 const Pending = (props) => {
   const [state, setState] = useState({ toggl: false, arrow: faCaretDown });
-  function handleClick() {
+ function handleClick() {
     setState((prev) => ({ ...prev, toggl: !prev.toggl }));
     if (state.toggl) {
       setState((prev) => ({ ...prev, arrow: faCaretDown }));

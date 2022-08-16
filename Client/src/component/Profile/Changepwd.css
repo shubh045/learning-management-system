@@ -27,7 +27,7 @@
 }
 #cpwd,#npwd,#nnpwd{
     max-height:20px;
-    border-radius: 1%;
+    border-radius:7px;
 }
 #save,#cancel{
     width:40%;

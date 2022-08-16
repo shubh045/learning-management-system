@@ -9,6 +9,14 @@ const generator = require("generate-password");
 const { SuccessObj } = require("./responseMethod");
 const Router = express.Router();
 
+Router.get("/api/addEmp", async (req, res) => {
+  Employee.find().then((result) => {
+    res.status(200).json({
+      employee: result,
+    });
+  });
+});
+
 Router.post("/api/addEmployee", async (req, res) => {
   try {
     const {
@@ -35,7 +43,7 @@ Router.post("/api/addEmployee", async (req, res) => {
 
     const salt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(password, salt);
-  
+
     const employee = new Employee({
       firstName,
       lastName,
@@ -65,10 +73,9 @@ Router.post("/api/addEmployee", async (req, res) => {
     await sendEmail(mailOptions);
 
     const data = new SuccessObj();
-      data.message = "Register successfuly";
+    data.message = "Register successfuly";
 
-
-      res.status(201).json({ ...data });
+    res.status(201).json({ ...data });
   } catch (err) {
     console.log(err);
     res.json({ status: "error", error: err.message });

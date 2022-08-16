@@ -12,6 +12,7 @@ export default function Loginfo() {
   const [password, changePassword] = useState("");
   const [errorMessage, changeErrorMessage] = useState('');
   const {user, updateUser} = useAuthContext()
+  
 
   const submitChange =  (e) => {
     console.log(email, password);
@@ -39,7 +40,7 @@ export default function Loginfo() {
         <input
           type="email"
           name="email"
-          placeholder="abcde@gmail.com"
+          placeholder="Email"
           id="email"
           onChange={(e) => changeEmail(e.target.value)}
         />
@@ -50,7 +51,7 @@ export default function Loginfo() {
         <input
           type="password"
           name="password"
-          placeholder="alphanumeric with symbols"
+          placeholder="Password"
           id="pwd"
           onChange={(e) => changePassword(e.target.value)}
         />

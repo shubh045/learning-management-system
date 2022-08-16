@@ -68,10 +68,9 @@ Router.get("/api/leaveApply",async (req, res) =>{
 
   Router.put("/api/leaveApply",async (req, res) =>{
     const {id, status} = req.body;
-    console.log(req.body)
+    console.log("req body",req.body)
     try{
-    console.log(id,status);
-    const leaveData = await leaveApply.findOne({id});
+    const leaveData = await leaveApply.findOne({_id: id});
     leaveData.status=status;
     await leaveData.save();
     }catch(err){
