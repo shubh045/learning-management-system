@@ -29,7 +29,7 @@ route.post("/login", async (req, res, next) => {
       next(error);
       return;
     }
-    // vadate email and password with database
+    // validate email and password with database
     const employe = await Employee.findOne({ email });
 
     if (!employe) {
@@ -39,7 +39,6 @@ route.post("/login", async (req, res, next) => {
     }
     // check password
     const validatePassword = await bcrypt.compare(password, employe.password);
-
     if (!validatePassword) {
       const error = new ErrorObj(400, "Password is wrong");
       next(error);

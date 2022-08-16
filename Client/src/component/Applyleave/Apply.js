@@ -73,7 +73,7 @@ function Apply() {
           <option value="Casual Leave">Casual Leave</option>
           <option value="Paid Leave">Paid Leave</option>
           <option value="Sick Leave">Sick Leave</option>
-          <option value="Maternity Leave">Maternity Leave</option>
+          <option value="Maternity Leave">Parental Leave</option>
         </select>
 
         <div className="date">

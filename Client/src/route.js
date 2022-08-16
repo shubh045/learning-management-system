@@ -12,6 +12,7 @@ import PendingRequest from './component/PendingRequest/pendreq'
 import CalendarTable from "./component/Calendar/CalendarTable";
 import Empholiday from "./component/Empholiday/Empholiday"
 import Addteam from "./component/Addteam/Addteam";
+import History1 from "./component/History/history1";
 
 const Routes = () => useRoutes([
     {
@@ -46,7 +47,7 @@ const Routes = () => useRoutes([
           },
           {
             path: "/history",
-            element: <History />,
+            element: <History1 />,
           },
           {
             path: "/PendingRequest",
