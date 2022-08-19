@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useAuthContext } from "../../AuthContext";
 import axiosInstance from "../axios";
 
-const hrEmail = "shivansh.singh@block8.com";
+const hrEmail = "co20353@ccet.ac.in";
 
 
 function Apply() {
@@ -78,9 +78,9 @@ function Apply() {
 
         <div className="date">
           <label htmlFor="From">From</label>
-          <input type="date" value={leave.fromDate} onChange={lchangeHandler} name="fromDate" min={today} />
+          <input type="date" value={leave.fromDate.split('T')[0]} onChange={lchangeHandler} name="fromDate" min={today} />
           <label htmlFor="To">To</label>
-          <input type="date" value={leave.toDate} onChange={lchangeHandler} name="toDate" min={leave.fromDate} />
+          <input type="date" value={leave.toDate.split('T')[0]} onChange={lchangeHandler} name="toDate" min={leave.fromDate} />
         </div>
 
         <input

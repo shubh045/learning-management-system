@@ -49,11 +49,11 @@ export const Navbar = () => {
                     <li>{<button className="button b" onClick={() => navigate("/apply-leave")}>Apply Leave</button>}</li>
                     <li>{<button className="button b" onClick={() => navigate("/Calendar")}>Calendar</button>}</li>
                     <li>{<button className="button b" onClick={() => navigate("/team-member")}>Team Members</button>}</li>
-                    <li>{<button className="button b" onClick={() => navigate("/add-emp")}>Add Emp.</button>}</li>
+                    <li>{user.role=== "HR" && <button className="button b" onClick={() => navigate("/add-emp")}>Add Emp.</button>}</li>
                     {/* <li> <Link to={"/add-employee"} >Add emp</Link> </li> */}
                     <li>{<button class="button b" onClick={() => navigate("/history")}>History</button>}</li>
-                    <li>{<button class="button b" onClick={() => navigate("/PendingRequest")}>Pending Request</button>}</li>
-                    <li>{<button class="button b" onClick={() => navigate("/AddTeam")}>Create Team</button>}</li>
+                    <li>{(user.role=== "HR" || user.role=== "Manager")&&<button class="button b" onClick={() => navigate("/PendingRequest")}>Pending Request</button>}</li>
+                    {/* <li>{<button class="button b" onClick={() => navigate("/AddTeam")}>Create Team</button>}</li> */}
                 </ul>
             </div>
 

@@ -103,7 +103,7 @@ const History = () => {
             </div>
             <div className="subjec">
               <p style={{ padding: "7px" }}>
-                Date of Leave applied: {dateApplied}
+                Date of Leave applied: {dateApplied.split('T')[0]}
               </p>
               <p style={{ padding: "7px" }}>Type of Leave: {leaveType}</p>
               <p style={{ padding: "7px" }}>Subject: {subject}</p>

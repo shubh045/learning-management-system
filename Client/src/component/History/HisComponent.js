@@ -48,14 +48,14 @@ const HisComponent = (props) => {
         </div>
       </div>
       <div className="subjec">
-        <p style={{ padding: "7px" }}>Date of Leave applied: {dateApplied}</p>
+        <p style={{ padding: "7px" }}>Date of Leave applied: {dateApplied.split('T')[0]}</p>
         <p style={{ padding: "7px" }}>Type of Leave: {leaveType}</p>
         <p style={{ padding: "7px" }}>Subject: {subject}</p>
         {state.toggl && (
           <HistDesc
             description={description}
-            toDate={toDate}
-            fromDate={fromDate}
+            toDate={toDate.split('T')[0]}
+            fromDate={fromDate.split('T')[0]}
           />
         )}
       </div>

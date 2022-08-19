@@ -68,9 +68,9 @@ const Pending = (props) => {
             <p style={{ padding: "10px" }}>Type of Leave: {leaveType}</p>
             <p style={{ padding: "10px" }}>Subject: {subject}</p>
             <p style={{ padding: "10px", display: "inline-block" }}>
-              From Date: {fromDate}
+              From Date: {fromDate.split('T')[0]}
             </p>
-            <p style={{ display: "inline-block" }}>To Date: {toDate}</p>
+            <p style={{ display: "inline-block" }}>To Date: {toDate.split('T')[0]}</p>
             {state.toggl && <Description description={description} />}
           </div>
         </div>
