@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 const dbUrl =
-  "mongodb+srv://Admin:VIPZb498zKAImRYQ@cluster0.zvzw94r.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://shubh:ZeG7XN7yrqV9vWi@cluster0.mxpwzg3.mongodb.net/?retryWrites=true&w=majority";
 const connectionParams = {
   useNewUrlParser: true,
 };
